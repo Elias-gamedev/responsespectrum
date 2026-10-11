@@ -18,7 +18,7 @@ const verifiedPhotos: Record<string, ProjectPhoto> = {
  'Golden Star Mall and Office Complex': { image: goldenStar.url, imageAlt: 'Golden Star Building photographed during construction', photoSource: 'https://ease-int.com/projects/golden-star-building/', photoCredit: 'EASE Engineering · Construction photo' },
  'Oromia Media Complex': { image: oromiaMedia.url, imageAlt: 'Oromia Media Complex, the glass-fronted OBN headquarters in Addis Ababa', photoSource: 'https://besconsultants.net/blogs/projects/media-complex-ethiopia', photoCredit: 'BES Consultants' },
 };
-export const projects = [
+export const projects = ([
  ['National Oil Ethiopia (NOC) Head Office', 'Commercial Buildings'],
  ['Golden Star Mall and Office Complex', 'Commercial Buildings'],
  ['Oromia Supreme Court', 'Institutional Buildings'],
@@ -29,7 +29,6 @@ export const projects = [
  ['Shaka Real Estate', 'Commercial Buildings'],
  ['Samket Mall', 'Commercial Buildings'],
  ['Gidado Dam Project', 'Other Projects'],
-] as const;
-export const projectsWithPhotos = projects;
+] as const).map(([name, category]) => ({ name, category, image: verifiedPhotos[name]?.image, imageAlt: verifiedPhotos[name]?.imageAlt, photoSource: verifiedPhotos[name]?.photoSource, photoCredit: verifiedPhotos[name]?.photoCredit, description: 'Part of RST’s building and engineering project experience in Ethiopia.' }));
 export function filterProjects(category: Category) { return category === 'All Projects' ? projects : projects.filter(project => project.category === category); }
 export function pageHead(title: string, description: string) { return { meta: [{ title: `${title} | Response Spectrum Trading PLC` }, { name: 'description', content: description }, { property: 'og:title', content: `${title} | Response Spectrum Trading PLC` }, { property: 'og:description', content: description }, { property: 'og:type', content: 'website' }, { name: 'twitter:card', content: 'summary_large_image' }] }; }
