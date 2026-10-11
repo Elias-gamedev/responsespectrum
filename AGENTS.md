@@ -8,3 +8,8 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Project architecture
+- Use TanStack file-based routes for the five public pages, with shared chrome in the root layout, so navigation and page metadata stay consistent.
+- Keep company services and project categories in a browser-safe data module, so page previews and filters share a single content source.
+- Keep this site frontend-only and the contact form explicitly unconfigured, because no message delivery service is authorized.
