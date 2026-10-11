@@ -12,5 +12,7 @@
 ## Project architecture
 - Use TanStack file-based routes for the five public pages, with shared chrome in the root layout, so navigation and page metadata stay consistent.
 - Keep company services and project categories in a browser-safe data module, so page previews and filters share a single content source.
-- Store downloaded project photography as CDN asset pointers with source-page provenance in the project data, and use an explicit no-photo state for unverified matches, so unrelated architecture is never presented as project evidence.
+- Keep downloaded project photography as real image files under `src/assets` imported directly by the data module, with the CDN pointer files kept only as provenance records, so the site renders identically when hosted outside Lovable.
+- Keep an explicit no-photo state for projects whose photograph could not be verified, so unrelated architecture is never presented as project evidence.
 - Keep this site frontend-only and the contact form explicitly unconfigured, because no message delivery service is authorized.
+- Select the deploy target with the `NITRO_PRESET` build-time variable (`vercel.json` sets it for Vercel) instead of editing `vite.config.ts`, so the Lovable build keeps its Cloudflare default.

@@ -21,9 +21,29 @@ npm i
 npm run dev
 ```
 
-## Built with
+## Deploying to Vercel
 
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS
+1. Push this repository to GitHub (see below), then in Vercel choose **Add New → Project** and import that repository.
+2. Vercel reads `vercel.json`, which runs `NITRO_PRESET=vercel npm run build`; leave the output directory empty and set Node.js to 22.
+3. Deploy. The site is server-rendered, so all five pages work from their own URLs.
+
+To build the Vercel package locally:
+
+```sh
+NITRO_PRESET=vercel npm run build
+```
+
+The result is written to `.vercel/output`.
+
+## Pushing to GitHub
+
+Create an empty repository on GitHub, then from this folder:
+
+```sh
+git init -b main
+git add .
+git commit -m "Initial commit"
+git remote add origin git@github.com:YOUR-USERNAME/YOUR-REPO.git
+git push -u origin main
+```
+
