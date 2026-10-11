@@ -12,4 +12,5 @@
 ## Project architecture
 - Use TanStack file-based routes for the five public pages, with shared chrome in the root layout, so navigation and page metadata stay consistent.
 - Keep company services and project categories in a browser-safe data module, so page previews and filters share a single content source.
+- Store downloaded project photography as CDN asset pointers with source-page provenance in the project data, and use an explicit no-photo state for unverified matches, so unrelated architecture is never presented as project evidence.
 - Keep this site frontend-only and the contact form explicitly unconfigured, because no message delivery service is authorized.
