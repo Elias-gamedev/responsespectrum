@@ -1,4 +1,5 @@
 # RST website
+- [x] Show the confirmed office address, email and phone numbers in the footer and contact page; remove the website address for now.
 - [x] Make standout named projects a central part of About Us.
 - [x] Replace illustrative project photos with verified real project images where available; leave unverified matches without substitute images.
 - [x] Deepen About Us with concise company history, capabilities, approach and values.

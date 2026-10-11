@@ -2,6 +2,11 @@ import { Building2, Ruler, HardHat, ClipboardCheck, Waypoints, ScanLine } from '
 import noc from '@/assets/noc-head-office.jpg.asset.json';
 import goldenStar from '@/assets/golden-star.jpg.asset.json';
 import oromiaMedia from '@/assets/oromia-media.jpg.asset.json';
+export const contact = {
+ address: 'Addis Ababa 22, H & M Building, Ethiopia',
+ email: 'Responsespectrum171717@gmail.com',
+ phones: ['0911249387', '0912249747'],
+};
 export const services = [
  { title: 'Building Design', icon: Building2, description: 'Architectural and engineering design solutions for residential, commercial, office, mixed-use, and institutional buildings.' },
  { title: 'Construction Supervision', icon: HardHat, description: 'Professional oversight to help ensure construction follows approved designs, required specifications, and quality standards.' },
