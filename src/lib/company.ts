@@ -1,7 +1,7 @@
 import { Building2, Ruler, HardHat, ClipboardCheck, Waypoints, ScanLine } from 'lucide-react';
-import noc from '@/assets/noc-head-office.jpg.asset.json';
-import goldenStar from '@/assets/golden-star.jpg.asset.json';
-import oromiaMedia from '@/assets/oromia-media.jpg.asset.json';
+import noc from '@/assets/noc-head-office.jpg';
+import goldenStar from '@/assets/golden-star.jpg';
+import oromiaMedia from '@/assets/oromia-media.jpg';
 export const contact = {
  address: 'Addis Ababa 22, H & M Building, Ethiopia',
  email: 'Responsespectrum171717@gmail.com',
@@ -19,9 +19,9 @@ export const categories = ['All Projects', 'Commercial Buildings', 'Institutiona
 export type Category = typeof categories[number];
 type ProjectPhoto = { image: string; imageAlt: string; photoSource: string; photoCredit: string };
 const verifiedPhotos: Record<string, ProjectPhoto> = {
- 'National Oil Ethiopia (NOC) Head Office': { image: noc.url, imageAlt: 'National Oil Ethiopia headquarters with its curved glass tower', photoSource: 'https://lessoethiopia.com/index.php/projects', photoCredit: 'LESSO Ethiopia' },
- 'Golden Star Mall and Office Complex': { image: goldenStar.url, imageAlt: 'Golden Star Building photographed during construction', photoSource: 'https://ease-int.com/projects/golden-star-building/', photoCredit: 'EASE Engineering · Construction photo' },
- 'Oromia Media Complex': { image: oromiaMedia.url, imageAlt: 'Oromia Media Complex, the glass-fronted OBN headquarters in Addis Ababa', photoSource: 'https://besconsultants.net/blogs/projects/media-complex-ethiopia', photoCredit: 'BES Consultants' },
+ 'National Oil Ethiopia (NOC) Head Office': { image: noc, imageAlt: 'National Oil Ethiopia headquarters with its curved glass tower', photoSource: 'https://lessoethiopia.com/index.php/projects', photoCredit: 'LESSO Ethiopia' },
+ 'Golden Star Mall and Office Complex': { image: goldenStar, imageAlt: 'Golden Star Building photographed during construction', photoSource: 'https://ease-int.com/projects/golden-star-building/', photoCredit: 'EASE Engineering · Construction photo' },
+ 'Oromia Media Complex': { image: oromiaMedia, imageAlt: 'Oromia Media Complex, the glass-fronted OBN headquarters in Addis Ababa', photoSource: 'https://besconsultants.net/blogs/projects/media-complex-ethiopia', photoCredit: 'BES Consultants' },
 };
 export const projects = ([
  ['National Oil Ethiopia (NOC) Head Office', 'Commercial Buildings'],
