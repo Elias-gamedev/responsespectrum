@@ -1,6 +1,7 @@
 import { Building2, Ruler, HardHat, ClipboardCheck, Waypoints, ScanLine } from 'lucide-react';
-import commercial from '@/assets/architecture-hero.jpg';
-import institutional from '@/assets/civic-building.jpg';
+import noc from '@/assets/noc-head-office.jpg.asset.json';
+import goldenStar from '@/assets/golden-star.jpg.asset.json';
+import oromiaMedia from '@/assets/oromia-media.jpg.asset.json';
 export const services = [
  { title: 'Building Design', icon: Building2, description: 'Architectural and engineering design solutions for residential, commercial, office, mixed-use, and institutional buildings.' },
  { title: 'Construction Supervision', icon: HardHat, description: 'Professional oversight to help ensure construction follows approved designs, required specifications, and quality standards.' },
@@ -11,7 +12,13 @@ export const services = [
 ];
 export const categories = ['All Projects', 'Commercial Buildings', 'Institutional Buildings', 'Other Projects'] as const;
 export type Category = typeof categories[number];
-export const projects = [
+type ProjectPhoto = { image: string; imageAlt: string; photoSource: string; photoCredit: string };
+const verifiedPhotos: Record<string, ProjectPhoto> = {
+ 'National Oil Ethiopia (NOC) Head Office': { image: noc.url, imageAlt: 'National Oil Ethiopia headquarters with its curved glass tower', photoSource: 'https://lessoethiopia.com/index.php/projects', photoCredit: 'LESSO Ethiopia' },
+ 'Golden Star Mall and Office Complex': { image: goldenStar.url, imageAlt: 'Golden Star Building photographed during construction', photoSource: 'https://ease-int.com/projects/golden-star-building/', photoCredit: 'EASE Engineering · Construction photo' },
+ 'Oromia Media Complex': { image: oromiaMedia.url, imageAlt: 'Oromia Media Complex, the glass-fronted OBN headquarters in Addis Ababa', photoSource: 'https://besconsultants.net/blogs/projects/media-complex-ethiopia', photoCredit: 'BES Consultants' },
+};
+export const projects = ([
  ['National Oil Ethiopia (NOC) Head Office', 'Commercial Buildings'],
  ['Golden Star Mall and Office Complex', 'Commercial Buildings'],
  ['Oromia Supreme Court', 'Institutional Buildings'],
@@ -22,6 +29,6 @@ export const projects = [
  ['Shaka Real Estate', 'Commercial Buildings'],
  ['Samket Mall', 'Commercial Buildings'],
  ['Gidado Dam Project', 'Other Projects'],
-].map(([name, category]) => ({ name, category, image: category === 'Commercial Buildings' ? commercial : institutional, description: 'Part of RST’s building and engineering project experience in Ethiopia.' }));
+] as const).map(([name, category]) => ({ name, category, image: verifiedPhotos[name]?.image, imageAlt: verifiedPhotos[name]?.imageAlt, photoSource: verifiedPhotos[name]?.photoSource, photoCredit: verifiedPhotos[name]?.photoCredit, description: 'Part of RST’s building and engineering project experience in Ethiopia.' }));
 export function filterProjects(category: Category) { return category === 'All Projects' ? projects : projects.filter(project => project.category === category); }
 export function pageHead(title: string, description: string) { return { meta: [{ title: `${title} | Response Spectrum Trading PLC` }, { name: 'description', content: description }, { property: 'og:title', content: `${title} | Response Spectrum Trading PLC` }, { property: 'og:description', content: description }, { property: 'og:type', content: 'website' }, { name: 'twitter:card', content: 'summary_large_image' }] }; }
