@@ -62,3 +62,36 @@
 .mobile-nav { position:absolute; top:80px; left:0; right:0; background:var(--background); border-bottom:1px solid var(--border); padding:20px 24px; }
 @media(max-width:767px) { .site-container { padding-inline:24px; } .site-header { height:80px; } .brand-logo { width:145px; height:60px; } .hero { height:600px; } .hero-content { padding-top:65px; } .hero h1 { font-size:36px; } .hero p { font-size:13px; } .hero>img { object-position:65% center; } .hero-bottom { font-size:9px; } .section { padding-block:58px; } .section-title { font-size:30px; } .page-intro h1 { font-size:34px; } .page-intro { padding-block:48px; } .about-image { height:270px; } }
 @media(prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; } }
+.hero-slide { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 1.2s ease, transform 7s ease; transform:scale(1.04); }
+.hero-slide.is-active { opacity:1; transform:scale(1); }
+.hero { height:min(86vh,760px); }
+.hero-copy { animation:heroIn .8s ease both; }
+@keyframes heroIn { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
+.hero-dot { width:44px; padding-top:10px; border-top:2px solid color-mix(in oklab,var(--hero-foreground) 35%,transparent); text-align:left; font-size:10px; color:inherit; }
+.hero-dot.is-active { border-color:var(--primary); color:var(--hero-foreground); }
+.hero-arrow { width:38px; height:38px; display:grid; place-items:center; border:1px solid color-mix(in oklab,var(--hero-foreground) 40%,transparent); border-radius:50%; color:var(--hero-foreground); }
+.hero-arrow:hover { background:var(--primary); border-color:var(--primary); }
+.project-tile { position:relative; display:block; overflow:hidden; aspect-ratio:4/3; color:var(--hero-foreground); border-radius:2px; }
+.project-tile-large { aspect-ratio:auto; min-height:100%; }
+.project-tile img, .gallery-media img { width:100%; height:100%; object-fit:cover; transition:transform .6s ease; }
+.project-tile:hover img, .gallery-item:hover img { transform:scale(1.04); }
+.project-tile-overlay { position:absolute; inset:auto 0 0 0; padding:22px; background:linear-gradient(transparent, oklch(.14 .016 260 / .85)); }
+.project-tile-overlay h3 { font-size:18px; }
+.photo-badge { position:absolute; top:12px; left:12px; font-size:9px; text-transform:uppercase; padding:4px 8px; background:oklch(.14 .016 260 / .6); color:var(--hero-foreground); }
+.photo-label { display:inline-flex; align-items:center; gap:4px; }
+.gallery { columns:3 300px; column-gap:24px; }
+.gallery-item { break-inside:avoid; display:block; width:100%; text-align:left; margin-bottom:34px; }
+.gallery-media { position:relative; overflow:hidden; aspect-ratio:3/2; }
+.gallery-tall .gallery-media { aspect-ratio:4/5; }
+.gallery-hover { position:absolute; inset:0; display:flex; align-items:flex-end; padding:18px; color:var(--hero-foreground); background:oklch(.14 .016 260 / .45); opacity:0; transition:opacity .3s; }
+.gallery-item:hover .gallery-hover, .gallery-item:focus-visible .gallery-hover { opacity:1; }
+.service-row { background:var(--background); }
+.service-thumb { aspect-ratio:16/7; overflow:hidden; }
+.service-thumb img { width:100%; height:100%; object-fit:cover; }
+.service-row h3 { font-size:18px; margin:20px 0 10px; }
+.social-link { width:34px; height:34px; display:grid; place-items:center; border:1px solid var(--border); border-radius:50%; }
+.social-link:hover { color:var(--primary); border-color:var(--primary); }
+.page-intro-image { position:relative; overflow:hidden; color:var(--hero-foreground); padding-block:120px; }
+.page-intro-image>img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.page-intro-image::after { content:''; position:absolute; inset:0; background:var(--hero-overlay); }
+.page-intro-image .body-copy { color:color-mix(in oklab,var(--hero-foreground) 85%,transparent); }
