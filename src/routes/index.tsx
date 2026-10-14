@@ -14,7 +14,7 @@ const slides: Slide[] = [
    text: 'Architectural and engineering solutions for buildings designed around function, quality, and lasting value.', 
    cta: 'Explore Our Services', 
    to: '/services', 
-   image: images.hero, 
+   image: images.slide6, 
    imageAlt: 'Modern building architecture (illustrative)' 
  },
  { 
@@ -52,7 +52,7 @@ const slides: Slide[] = [
    text: 'Rigorous structural engineering solutions ensuring safety, durability, and compliance with high international standards.', 
    cta: 'Explore Our Services', 
    to: '/services', 
-   image: images.civic, // or change to your new image reference
+   image: images.hero, // or change to your new image reference
    imageAlt: 'Civic structure engineering (illustrative)' 
  },
  // --- NEW SLIDE 6 ---
@@ -62,7 +62,7 @@ const slides: Slide[] = [
    text: 'Comprehensive master planning and urban development consultancy designed for sustainable community growth.', 
    cta: 'View Our Projects', 
    to: '/projects', 
-   image: images.goldenStar, // or change to your new image reference
+   image: images.slide5, // or change to your new image reference
    imageAlt: 'Urban development complex (illustrative)' 
  }
 ];

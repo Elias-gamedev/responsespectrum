@@ -24,8 +24,10 @@ import imgBridge from '@/assets/placeholder-bridge.jpg';
 import imgConstruction from '@/assets/placeholder-construction.jpg';
 import imgHero from '@/assets/architecture-hero.jpg';
 import imgCivic from '@/assets/civic-building.jpg';
+import slide5Image from '@/assets/slide-5.jpg';
+import slide6Image from '@/assets/slide-6.jpg';
 
-export const images = { office: imgOffice, residential: imgResidential, institutional: imgInstitutional, industrial: imgIndustrial, fuel: imgFuel, dam: imgDam, bridge: imgBridge, construction: imgConstruction, hero: imgHero, civic: imgCivic, noc, goldenStar, oromiaMedia };
+export const images = { office: imgOffice, residential: imgResidential, institutional: imgInstitutional, industrial: imgIndustrial, fuel: imgFuel, dam: imgDam, bridge: imgBridge, construction: imgConstruction, hero: imgHero, civic: imgCivic, noc, goldenStar, oromiaMedia, slide5: slide5Image, slide6: slide6Image };
 
 export const company = {
   name: 'Response Spectrum Trading PLC',
@@ -136,6 +138,7 @@ export const projects: Project[] = [
   { slug: 'intake-spillways', name: 'Intake Structures and Spillways', category: W, description: 'Water intake structures and spillways, drawing on the dam-related works referenced in the company profile.', ...ill(imgDam, 'Spillway and intake structure') },
   // image: src/assets/placeholder-construction.jpg
   { slug: 'minjar-maryam', name: 'Minjar Maryam Structural and Supervision Works', category: W, description: 'Structural engineering and construction supervision works.', ...ill(imgConstruction, 'Structural works on site') },
+
 ];
 
 export const featuredSlugs = ['noc-head-office', 'golden-star', 'oromia-supreme-court', 'oromia-media-complex', 'noc-parking-office', 'nyala-insurance-hq', 'sebeta-municipality', 'gidado-dam'];
