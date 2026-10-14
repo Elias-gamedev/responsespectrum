@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router';
 import { ArrowUpRight, ArrowRight, Menu, X, MapPin, Mail, Phone, ChevronLeft, ChevronRight, Facebook, Linkedin, Instagram, Youtube } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog';
 import logo from '@/assets/rst-logo.png';
@@ -33,16 +33,36 @@ export function ProjectGallery({ items, onOpen }: { items: Project[]; onOpen: (p
 
 export function ProjectDialog({ project, onClose }: { project: Project | null; onClose: () => void }) { return <Dialog open={!!project} onOpenChange={o => !o && onClose()}><DialogContent className="max-w-3xl gap-0 overflow-hidden p-0">{project && <><img src={project.image} alt={project.imageAlt} className="aspect-[16/9] w-full object-cover" width={1600} height={1008}/><div className="p-7"><p className="project-category mt-0">{project.category}</p><DialogTitle className="text-2xl">{project.name}</DialogTitle><DialogDescription className="body-copy mt-4">{project.description}</DialogDescription><p className="mt-5 text-[11px] text-muted-foreground"><PhotoLabel project={project}/>{project.photo === 'illustrative' && ' — not a photograph of this project. Site photos will replace it.'}</p></div></>}</DialogContent></Dialog>; }
 
-const AUTOPLAY_MS = 6000;
+const AUTOPLAY_MS = 5000;
 export type Slide = { label: string; title: string; text: string; cta: string; to: To; image: string; imageAlt: string; credit?: string };
 export function HeroCarousel({ slides }: { slides: Slide[] }) {
-  const [index, setIndex] = useState(0); const [paused, setPaused] = useState(false); const reduced = useRef(false);
-  useEffect(() => { reduced.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches; if (reduced.current) setPaused(true); }, []);
-  useEffect(() => { if (paused) return; const t = setTimeout(() => setIndex(i => (i + 1) % slides.length), AUTOPLAY_MS); return () => clearTimeout(t); }, [index, paused, slides.length]);
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((i) => (i + 1) % slides.length);
+    }, AUTOPLAY_MS);
+    return () => clearInterval(timer);
+  }, [slides.length]);
+
   const go = (i: number) => { setIndex((i + slides.length) % slides.length); };
-  return <section className="hero" aria-roledescription="carousel" aria-label="Featured" onPointerEnter={e => { if (e.pointerType === 'mouse') setPaused(true); }} onPointerLeave={e => { if (e.pointerType === 'mouse' && !reduced.current) setPaused(false); }}>
-    {slides.map((s, i) => <img key={s.title} src={s.image} alt={i === index ? s.imageAlt : ''} aria-hidden={i !== index} width={1600} height={1008} className={`hero-slide ${i === index ? 'is-active' : ''}`} fetchPriority={i === 0 ? 'high' : 'low'}/>)}
-    <div className="site-container hero-content" aria-live="polite">{slides.map((s, i) => i === index && <div key={s.title} className="hero-copy"><Eyebrow>{s.label}</Eyebrow><h1>{s.title}</h1><p>{s.text}</p><div className="mt-8"><Button asChild size="lg"><Link to={s.to}>{s.cta} <ArrowUpRight/></Link></Button></div></div>)}</div>
-    <div className="site-container hero-bottom"><div className="flex items-center gap-3">{slides.map((s, i) => <button key={s.title} type="button" onClick={() => go(i)} aria-label={`Go to slide ${i + 1}: ${s.label}`} aria-current={i === index} className={`hero-dot ${i === index ? 'is-active' : ''}`}><span>{String(i + 1).padStart(2, '0')}</span></button>)}</div><div className="flex items-center gap-4"><span className="hidden sm:inline">{slides[index]?.credit ?? 'Illustrative image'}</span><button type="button" className="hero-arrow" onClick={() => go(index - 1)} aria-label="Previous slide"><ChevronLeft size={18}/></button><button type="button" className="hero-arrow" onClick={() => go(index + 1)} aria-label="Next slide"><ChevronRight size={18}/></button></div></div>
-  </section>;
+
+  return (
+    <section className="hero" aria-roledescription="carousel" aria-label="Featured">
+      {slides.map((s, i) => <img key={s.title} src={s.image} alt={i === index ? s.imageAlt : ''} aria-hidden={i !== index} width={1600} height={1008} className={`hero-slide ${i === index ? 'is-active' : ''}`} fetchPriority={i === 0 ? 'high' : 'low'}/>)}
+      <div className="site-container hero-content" aria-live="polite">
+        {slides.map((s, i) => i === index && <div key={s.title} className="hero-copy"><Eyebrow>{s.label}</Eyebrow><h1>{s.title}</h1><p>{s.text}</p><div className="mt-8"><Button asChild size="lg"><Link to={s.to}>{s.cta} <ArrowUpRight/></Link></Button></div></div>)}
+      </div>
+      <div className="site-container hero-bottom">
+        <div className="flex items-center gap-3">
+          {slides.map((s, i) => <button key={s.title} type="button" onClick={() => go(i)} aria-label={`Go to slide ${i + 1}: ${s.label}`} aria-current={i === index} className={`hero-dot ${i === index ? 'is-active' : ''}`}><span>{String(i + 1).padStart(2, '0')}</span></button>)}
+        </div>
+        <div className="flex items-center gap-4">
+          <span className="hidden sm:inline">{slides[index]?.credit ?? 'Illustrative image'}</span>
+          <button type="button" className="hero-arrow" onClick={() => go(index - 1)} aria-label="Previous slide"><ChevronLeft size={18}/></button>
+          <button type="button" className="hero-arrow" onClick={() => go(index + 1)} aria-label="Next slide"><ChevronRight size={18}/></button>
+        </div>
+      </div>
+    </section>
+  );
 }
