@@ -23,7 +23,7 @@ const slides: Slide[] = [
    text: 'Engineering consultancy experience across complex structures, infrastructure, and water-related projects.', 
    cta: 'Discover Our Expertise', 
    to: '/about', 
-   image: images.dam, 
+   image: images.omoriaSC, 
    imageAlt: 'Dam and spillway (illustrative)' 
  },
  { 
@@ -41,7 +41,7 @@ const slides: Slide[] = [
    text: 'Explore selected building, commercial, institutional, and infrastructure projects associated with RST.', 
    cta: 'Explore Projects', 
    to: '/projects', 
-   image: images.noc, 
+   image: images.slide7, 
    imageAlt: 'National Oil Ethiopia headquarters', 
    credit: 'NOC Head Office · Photo: LESSO Ethiopia' 
  },

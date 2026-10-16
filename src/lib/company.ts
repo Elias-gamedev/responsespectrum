@@ -26,8 +26,13 @@ import imgHero from '@/assets/architecture-hero.jpg';
 import imgCivic from '@/assets/civic-building.jpg';
 import slide5Image from '@/assets/slide-5.jpg';
 import slide6Image from '@/assets/slide-6.jpg';
+import slide7Image from '@/assets/slide-7.jpg';
+import imgApartmentBuilding from '@/assets/apartmentbldg.jpg';
+import imgMattsRealEstate from '@/assets/mattsrealestate.jpg';
+import imgGenzebedibaba from '@/assets/genzebedibaba.jpg';
+import imgOmoriaSC from '@/assets/oromiaSC.png';
 
-export const images = { office: imgOffice, residential: imgResidential, institutional: imgInstitutional, industrial: imgIndustrial, fuel: imgFuel, dam: imgDam, bridge: imgBridge, construction: imgConstruction, hero: imgHero, civic: imgCivic, noc, goldenStar, oromiaMedia, slide5: slide5Image, slide6: slide6Image };
+export const images = { office: imgOffice, residential: imgResidential, institutional: imgInstitutional, industrial: imgIndustrial, fuel: imgFuel, dam: imgDam, bridge: imgBridge, construction: imgConstruction, hero: imgHero, civic: imgCivic, noc, goldenStar, oromiaMedia, slide5: slide5Image, slide6: slide6Image, slide7: slide7Image, apartmentBuilding: imgApartmentBuilding, mattsRealEstate: imgMattsRealEstate, genzebedibaba: imgGenzebedibaba, omoriaSC: imgOmoriaSC };
 
 export const company = {
   name: 'Response Spectrum Trading PLC',
@@ -95,7 +100,7 @@ export const projects: Project[] = [
   // image: src/assets/golden-star.jpg (verified)
   { slug: 'golden-star', name: 'Golden Star Mall and Office Complex', category: C, description: 'A large commercial development combining mall and office functions. RST’s documented assignment includes design, construction supervision, and contract administration.', image: goldenStar, imageAlt: 'Golden Star Building photographed during construction', photo: 'verified', photoCredit: 'EASE Engineering · Construction photo', photoSource: 'https://ease-int.com/projects/golden-star-building/' },
   // image: src/assets/placeholder-office.jpg
-  { slug: 'nyala-insurance-hq', name: 'Nyala Insurance Headquarters', category: C, description: 'An office headquarters project. The profile describes RST’s involvement in construction supervision and contract administration.', ...ill(imgOffice, 'Glass office headquarters tower') },
+  { slug: 'nyala-insurance-hq', name: 'Nyala Insurance Headquarters', category: C, description: 'An office headquarters project. The profile describes RST’s involvement in construction supervision and contract administration.', ...ill(slide6Image, 'Glass office headquarters tower') },
   // image: src/assets/oromia-media.jpg (verified)
   { slug: 'oromia-media-complex', name: 'Oromia Media Complex', category: I, description: 'A large media complex. The documented assignment includes structural design-related work, construction supervision, and contract administration in association with other consultants.', image: oromiaMedia, imageAlt: 'Oromia Media Complex, the glass-fronted OBN headquarters in Addis Ababa', photo: 'verified', photoCredit: 'BES Consultants', photoSource: 'https://besconsultants.net/blogs/projects/media-complex-ethiopia' },
   // image: src/assets/placeholder-residential.jpg
@@ -103,7 +108,7 @@ export const projects: Project[] = [
   // image: src/assets/placeholder-residential.jpg
   { slug: 'pecan-mixed-use', name: 'Mixed-Use Building, Pecan Building Rental', category: R, description: 'A mixed-use building project listed in the company profile, with design and construction consultancy services.', ...ill(imgResidential, 'Mixed-use building') },
   // image: src/assets/placeholder-institutional.jpg
-  { slug: 'oromia-supreme-court', name: 'Oromia Supreme Court', category: I, description: 'An institutional building. RST’s documented involvement includes structural design-related services, construction supervision, and contract administration in association with other consultants.', ...ill(imgInstitutional, 'Civic court building with columns') },
+  { slug: 'oromia-supreme-court', name: 'Oromia Supreme Court', category: I, description: 'An institutional building. RST’s documented involvement includes structural design-related services, construction supervision, and contract administration in association with other consultants.', ...ill(imgOmoriaSC, 'Civic court building with columns') },
   // image: src/assets/civic-building.jpg
   { slug: 'sebeta-municipality', name: 'Sebeta Municipality Building', category: I, description: 'A municipal office development listed in the company profile, with design and supervision-related involvement.', ...ill(imgCivic, 'Contemporary civic building') },
   // image: src/assets/architecture-hero.jpg
@@ -111,13 +116,13 @@ export const projects: Project[] = [
   // image: src/assets/placeholder-residential.jpg
   { slug: 'shaka-real-estate', name: 'Shaka Real Estate', category: R, description: 'A real estate development comprising multiple building blocks, with structural and building consultancy experience.', ...ill(imgResidential, 'Residential apartment blocks') },
   // image: src/assets/placeholder-construction.jpg
-  { slug: 'matts-real-estate', name: 'MATTS Real Estate', category: R, description: 'A residential building project listed in the company profile, with design, construction supervision, and contract administration.', ...ill(imgConstruction, 'Residential building under construction') },
+  { slug: 'matts-real-estate', name: 'MATTS Real Estate', category: R, description: 'A residential building project listed in the company profile, with design, construction supervision, and contract administration.', ...ill(imgMattsRealEstate, 'Residential building under construction') },
   // image: src/assets/placeholder-residential.jpg
   { slug: 'tinsae-apartments', name: 'Tinsae Real Estate Apartment Project', category: R, description: 'A multi-storey apartment development listed in the company profile, with design and consultancy involvement.', ...ill(imgResidential, 'Multi-storey apartment building') },
   // image: src/assets/placeholder-office.jpg
-  { slug: 'genzebe-dibaba-mall', name: 'Genzebe Dibaba Mall and Apartment', category: R, description: 'A mixed-use mall and apartment project included in the company profile.', ...ill(imgOffice, 'Mixed-use tower') },
+  { slug: 'genzebe-dibaba-mall', name: 'Genzebe Dibaba Mall and Apartment', category: R, description: 'A mixed-use mall and apartment project included in the company profile.', ...ill(imgGenzebedibaba, 'Mixed-use tower') },
   // image: src/assets/placeholder-construction.jpg
-  { slug: 'walelign-apartments', name: 'Walelign Real Estate Apartment Building', category: R, description: 'A residential apartment development listed in the company profile.', ...ill(imgConstruction, 'Apartment building under construction') },
+  { slug: 'walelign-apartments', name: 'Walelign Real Estate Apartment Building', category: R, description: 'A residential apartment development listed in the company profile.', ...ill(imgApartmentBuilding, 'Apartment building under construction') },
   // image: src/assets/architecture-hero.jpg
   { slug: 'alemayehu-hotel', name: 'Ato Alemayehu Hotel', category: R, description: 'A hotel project with design and construction consultancy involvement described in the company profile.', ...ill(imgHero, 'Modern hotel architecture') },
   // image: src/assets/placeholder-industrial.jpg
