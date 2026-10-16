@@ -31,8 +31,17 @@ import imgApartmentBuilding from '@/assets/apartmentbldg.jpg';
 import imgMattsRealEstate from '@/assets/mattsrealestate.jpg';
 import imgGenzebedibaba from '@/assets/genzebedibaba.jpg';
 import imgOmoriaSC from '@/assets/oromiaSC.png';
+import imgOfficeDesign from '@/assets/officedesign.jpg';
+import imgStructuraldesign from '@/assets/images (3).jpg';
+import imgConstman from '@/assets/constman.png';
+import imgslidepicapartment from '@/assets/slidepicapartment.jpg';
+import imgOromiamediacomplex from '@/assets/oromiamediacomplex.jpg'
+import logo1 from '@/assets/noclogo.jpg'
+import logo2 from '@/assets/oromiacourtlogo.png'
+import logo4 from '@/assets/mattsrealestatelogo.png'
+import logo3 from '@/assets/nyalainsulogo.jpg'
 
-export const images = { office: imgOffice, residential: imgResidential, institutional: imgInstitutional, industrial: imgIndustrial, fuel: imgFuel, dam: imgDam, bridge: imgBridge, construction: imgConstruction, hero: imgHero, civic: imgCivic, noc, goldenStar, oromiaMedia, slide5: slide5Image, slide6: slide6Image, slide7: slide7Image, apartmentBuilding: imgApartmentBuilding, mattsRealEstate: imgMattsRealEstate, genzebedibaba: imgGenzebedibaba, omoriaSC: imgOmoriaSC };
+export const images = { noclogo: logo1, oromiacourtlogo: logo2, mattsrealestatelogo: logo4, nyalalogo: logo3, office: imgOffice, residential: imgResidential, institutional: imgInstitutional, industrial: imgIndustrial, fuel: imgFuel, dam: imgDam, bridge: imgBridge, construction: imgConstruction, hero: imgHero, civic: imgCivic, noc, goldenStar, oromiaMedia, slide5: slide5Image, slide6: slide6Image, slide7: slide7Image, apartmentBuilding: imgApartmentBuilding, mattsRealEstate: imgMattsRealEstate, genzebedibaba: imgGenzebedibaba, omoriaSC: imgOmoriaSC, officeDesign: imgOfficeDesign, structuraldesign: imgStructuraldesign, constman: imgConstman, slidepicapartment: imgslidepicapartment };
 
 export const company = {
   name: 'Response Spectrum Trading PLC',
@@ -54,20 +63,30 @@ export const contact = {
 export const socialLinks: { network: 'Facebook' | 'LinkedIn' | 'Instagram' | 'YouTube'; url: string }[] = [
   { network: 'Facebook', url: '' },  // TODO: official Facebook page URL
   { network: 'LinkedIn', url: '' },  // TODO: official LinkedIn company URL
-  { network: 'Instagram', url: '' }, // TODO: official Instagram URL
-  { network: 'YouTube', url: '' },   // TODO: official YouTube URL, if any
 ];
 export const activeSocialLinks = () => socialLinks.filter(link => link.url.trim() !== '');
 
+/**
+ * this is partner logo slider
+ */
+export const partners = [
+  { name: 'National Oil Ethiopia (NOC)', image: logo1 },
+  { name: 'Oromia Media Complex', image: logo2 },
+  { name: 'Nyala Insurance', image: logo3 },
+  { name: 'Matts Real estate', image: logo4 },
+];
+
 export const services = [
   { title: 'Architectural Design', icon: Building2, image: imgHero, description: 'Architectural planning and building design for residential, commercial, office, mixed-use, institutional, and other building projects.' },
-  { title: 'Structural Engineering', icon: Ruler, image: imgConstruction, description: 'Structural design, structural design revision, engineering coordination, and structural investigation where required.' },
+  { title: 'Structural Engineering', icon: Ruler, image: imgStructuraldesign, description: 'Structural design, structural design revision, engineering coordination, and structural investigation where required.' },
   { title: 'Building Consultancy and Engineering', icon: Layers, image: imgCivic, description: 'Multidisciplinary consultancy incorporating architectural, structural, electrical, mechanical, and sanitary engineering disciplines.' },
-  { title: 'Construction Management and Supervision', icon: HardHat, image: imgConstruction, description: 'Construction-phase oversight, site coordination, quality monitoring, progress supervision, and checking work against approved designs and specifications.' },
+  { title: 'Construction Management and Supervision', icon: HardHat, image: imgConstman, description: 'Construction-phase oversight, site coordination, quality monitoring, progress supervision, and checking work against approved designs and specifications.' },
   { title: 'Contract Administration', icon: ClipboardCheck, image: imgOffice, description: 'Support with construction contract administration, contractual requirements, documentation, and project delivery processes.' },
   { title: 'Project Management', icon: Waypoints, image: imgResidential, description: 'Project planning, design and procurement coordination, stakeholder communication, and monitoring of time, cost, quality, and safety.' },
   { title: 'Infrastructure and Water-Related Structures', icon: Waves, image: imgDam, description: 'Engineering consultancy experience associated with dams and related structures, including spillways, intake structures, and other water infrastructure.' },
   { title: 'Industrial and Specialized Structures', icon: Factory, image: imgIndustrial, description: 'Design and engineering consultancy for industrial facilities, factories, fuel stations, and other specialized structures.' },
+  { title: 'Interior Design', icon: Waypoints, image: imgOfficeDesign, description: 'Design and engineering consultancy for interior design, including office spaces, apartments, and other commercial spaces.' },
+  { title: 'Apartment Design', icon: Building2, image: imgApartmentBuilding, description: 'Design and engineering consultancy for apartment design, including apartment buildings, apartments, and other residential spaces.' },
 ];
 
 export const expertise = [
@@ -102,7 +121,7 @@ export const projects: Project[] = [
   // image: src/assets/placeholder-office.jpg
   { slug: 'nyala-insurance-hq', name: 'Nyala Insurance Headquarters', category: C, description: 'An office headquarters project. The profile describes RST’s involvement in construction supervision and contract administration.', ...ill(slide6Image, 'Glass office headquarters tower') },
   // image: src/assets/oromia-media.jpg (verified)
-  { slug: 'oromia-media-complex', name: 'Oromia Media Complex', category: I, description: 'A large media complex. The documented assignment includes structural design-related work, construction supervision, and contract administration in association with other consultants.', image: oromiaMedia, imageAlt: 'Oromia Media Complex, the glass-fronted OBN headquarters in Addis Ababa', photo: 'verified', photoCredit: 'BES Consultants', photoSource: 'https://besconsultants.net/blogs/projects/media-complex-ethiopia' },
+  { slug: 'oromia-media-complex', name: 'Oromia Media Complex', category: I, description: 'A large media complex. The documented assignment includes structural design-related work, construction supervision, and contract administration in association with other consultants.', image: imgOromiamediacomplex, imageAlt: 'Oromia Media Complex, the glass-fronted OBN headquarters in Addis Ababa', photo: 'verified', photoCredit: 'BES Consultants', photoSource: 'https://besconsultants.net/blogs/projects/media-complex-ethiopia' },
   // image: src/assets/placeholder-residential.jpg
   { slug: 'samket-mall', name: 'Samket Mall', category: C, description: 'A commercial development listed in the company profile, with design and construction consultancy involvement.', ...ill(imgResidential, 'Mixed-use building with shops at street level') },
   // image: src/assets/placeholder-residential.jpg
@@ -142,6 +161,21 @@ export const projects: Project[] = [
   // image: src/assets/placeholder-dam.jpg
   { slug: 'intake-spillways', name: 'Intake Structures and Spillways', category: W, description: 'Water intake structures and spillways, drawing on the dam-related works referenced in the company profile.', ...ill(imgDam, 'Spillway and intake structure') },
   // image: src/assets/placeholder-construction.jpg
+  // Add new apartment or interior project entries under projects array:
+{ 
+  slug: 'modern-apartment-complex', 
+  name: 'Modern Apartment Complex Development', 
+  category: 'Residential and Mixed-Use Buildings', 
+  description: 'Contemporary apartment building and neighborhood development featuring optimized spatial planning.', 
+  ...ill(imgApartmentBuilding, 'Modern apartment complex') 
+},
+{ 
+  slug: 'luxury-interior-design', 
+  name: 'Apartment & Project Interior Developments', 
+  category: 'Residential and Mixed-Use Buildings', 
+  description: 'Custom interior design and fit-out solutions for residential apartments and commercial spaces.', 
+  ...ill(imgOfficeDesign, 'Luxury interior design styling') 
+},
   { slug: 'minjar-maryam', name: 'Minjar Maryam Structural and Supervision Works', category: W, description: 'Structural engineering and construction supervision works.', ...ill(imgConstruction, 'Structural works on site') },
 
 ];
