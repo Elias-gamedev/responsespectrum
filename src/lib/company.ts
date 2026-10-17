@@ -10,7 +10,7 @@
  */
 import { Building2, Ruler, Layers, HardHat, ClipboardCheck, Waypoints, Waves, Factory } from 'lucide-react';
 // Verified real project photographs (credited to their sources)
-import noc from '@/assets/noc-head-office.jpg';
+import noc from '@/assets/noc-head-office .jpg';
 import goldenStar from '@/assets/golden-star.jpg';
 import oromiaMedia from '@/assets/oromia-media.jpg';
 // Illustrative placeholders — replace with client site photos when supplied
@@ -113,7 +113,7 @@ const ill = (image: string, imageAlt: string) => ({ image, imageAlt: `${imageAlt
 
 export const projects: Project[] = [
   // image: src/assets/noc-head-office.jpg (verified)
-  { slug: 'noc-head-office', name: 'National Oil Ethiopia (NOC) Head Office', category: C, description: 'A major office development. RST’s documented assignment includes design, construction supervision, and contract administration. The company profile describes the project as completed.', image: noc, imageAlt: 'National Oil Ethiopia headquarters with its curved glass tower', photo: 'verified', photoCredit: 'LESSO Ethiopia', photoSource: 'https://lessoethiopia.com/index.php/projects' },
+  { slug: 'noc-head-office', name: 'National Oil Ethiopia (NOC) Head Office', category: C, description: 'A major office development. RST’s documented assignment includes design, construction supervision, and contract administration. The company profile describes the project as completed.', image: slide5Image, imageAlt: 'National Oil Ethiopia headquarters with its curved glass tower', photo: 'verified', photoCredit: 'LESSO Ethiopia', photoSource: 'https://lessoethiopia.com/index.php/projects' },
   // image: src/assets/placeholder-office.jpg
   { slug: 'noc-parking-office', name: 'NOC Parking and Office Building', category: C, description: 'A parking and office development associated with National Oil Ethiopia. The profile lists design, construction supervision, and contract administration.', ...ill(imgOffice, 'Modern office building') },
   // image: src/assets/golden-star.jpg (verified)
