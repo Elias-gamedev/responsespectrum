@@ -240,65 +240,143 @@ function ProjectsPage() {
       </section>
 
       {/* --- DETAILED PROJECT SHOWCASE MODAL OVERLAY --- */}
-      {selectedProject && (
+  {/* --- HIGH-END ARCHITECTURAL SHOWCASE MODAL OVERLAY --- */}
+  {selectedProject && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 sm:p-6 backdrop-blur-md transition-all"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 sm:p-6 backdrop-blur-lg transition-all animate-in fade-in duration-300"
           onClick={() => setSelectedProject(null)}
         >
           <div 
-            className="relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-3xl border border-border bg-background shadow-2xl transition-all"
+            className="relative max-h-[92vh] w-full max-w-4xl overflow-y-auto rounded-3xl border border-border/80 bg-background shadow-2xl transition-all"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* CLOSE BUTTON */}
+            {/* Top Close Button */}
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-background/80 text-foreground backdrop-blur-md transition-all hover:bg-primary hover:text-primary-foreground"
+              className="absolute top-5 right-5 z-30 flex h-11 w-11 items-center justify-center rounded-full bg-background/90 text-foreground shadow-md backdrop-blur-md transition-all hover:bg-primary hover:text-primary-foreground hover:scale-105 border border-border/60"
             >
               ✕
             </button>
 
-            {/* MODAL HERO IMAGE */}
-            <div className="relative aspect-[16/9] w-full overflow-hidden bg-muted">
+            {/* Hero Image Frame */}
+            <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden bg-muted">
               <img
                 src={selectedProject.image}
                 alt={selectedProject.name}
                 className="h-full w-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
               
-              <div className="absolute bottom-6 left-6 right-6">
-                <span className={`inline-block rounded-full px-4 py-1.5 text-[10px] font-black tracking-wider uppercase shadow-lg backdrop-blur-md border ${
+              <div className="absolute top-5 left-5 z-20">
+                <span className={`inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-[10px] font-black tracking-widest uppercase shadow-lg backdrop-blur-md border ${
                   selectedProject.photo === 'verified'
-                    ? 'bg-emerald-600 text-white border-emerald-500'
+                    ? 'bg-emerald-600/90 text-white border-emerald-500'
                     : 'bg-background/90 text-foreground border-border/80'
                 }`}>
-                  {selectedProject.photo === 'verified' ? '✓ Verified Site Project' : 'Illustrative Study'}
+                  {selectedProject.photo === 'verified' ? '✓ Verified Site Project' : 'Illustrative Architectural Study'}
+                </span>
+              </div>
+
+              <div className="absolute bottom-4 left-6 right-6 z-20 hidden sm:block">
+                <span className="text-xs font-black uppercase tracking-widest text-primary bg-background/90 px-3 py-1 rounded-md backdrop-blur-md border border-border/40">
+                  {selectedProject.category}
                 </span>
               </div>
             </div>
 
-            {/* MODAL CONTENT BODY */}
-            <div className="p-8 sm:p-12">
-              <span className="text-xs font-black uppercase tracking-widest text-primary">
+            {/* Content Container */}
+            <div className="p-6 sm:p-10">
+              <span className="text-[11px] font-black uppercase tracking-widest text-primary sm:hidden">
                 {selectedProject.category}
               </span>
-              <h2 className="mt-2 text-3xl sm:text-4xl font-black text-foreground">
+              <h2 className="text-2xl sm:text-4xl font-black tracking-tight text-foreground mt-1 sm:mt-0">
                 {selectedProject.name}
               </h2>
 
-              <div className="mt-6 border-t border-border/60 pt-6">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                  Documented Assignment & Scope
+              {/* --- PROMINENT ASSIGNMENT & RESPONSIBILITY HIGHLIGHT BAR --- */}
+              <div className="mt-6 rounded-2xl bg-primary/10 border-2 border-primary/30 p-5 shadow-sm">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div>
+                    <span className="text-[10px] font-black uppercase tracking-widest text-primary">
+                      Official RST Consultancy Assignment
+                    </span>
+                    <p className="text-base sm:text-lg font-black text-foreground mt-0.5">
+                      {selectedProject.assignment || 
+                        (selectedProject.description.includes('Assignment:')
+                          ? selectedProject.description.split('Assignment:')[1].trim()
+                          : 'Design, Structural Engineering & Consultancy')}
+                    </p>
+                  </div>
+                  
+                  {/* Visual Scope Tags */}
+                  <div className="flex flex-wrap gap-1.5 shrink-0">
+                    {(selectedProject.assignmentTags || ['Design', 'Supervision', 'Contract Admin', 'Structural Work']
+                      .filter(scope => selectedProject.description.toLowerCase().includes(scope.toLowerCase().split(' ')[0])))
+                      .map((tag) => (
+                        <span key={tag} className="rounded-lg bg-primary text-primary-foreground px-2.5 py-1 text-[10px] font-black uppercase tracking-wider shadow-sm">
+                          {tag}
+                        </span>
+                      ))}
+                  </div>
+                </div>
+              </div>
+              {/* Key Specifications Grid */}
+              <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 rounded-2xl bg-muted/40 p-5 border border-border/60">
+                <div>
+                  <span className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground/80">
+                    Project Sector
+                  </span>
+                  <span className="text-xs sm:text-sm font-bold text-foreground mt-1 block">
+                    {selectedProject.category.split(' ')[0]}
+                  </span>
+                </div>
+
+                <div>
+                  <span className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground/80">
+                    Project Status
+                  </span>
+                  <span className="text-xs sm:text-sm font-extrabold text-emerald-600 dark:text-emerald-400 mt-1 block">
+                    {selectedProject.status || 'Verified Project'}
+                  </span>
+                </div>
+
+                <div>
+                  <span className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground/80">
+                    Investment Value
+                  </span>
+                  <span className="text-xs sm:text-sm font-bold text-foreground mt-1 block">
+                    {selectedProject.cost || 'Consultancy Record'}
+                  </span>
+                </div>
+
+                <div>
+                  <span className="block text-[10px] font-black uppercase tracking-widest text-muted-foreground/80">
+                    Scale / Capacity
+                  </span>
+                  <span className="text-xs sm:text-sm font-bold text-foreground mt-1 block">
+                    {selectedProject.size || 'Custom Engineering'}
+                  </span>
+                </div>
+              </div>
+
+              {/* Full Description & Scope Details */}
+              <div className="mt-6 rounded-2xl border border-border/60 bg-background p-6 shadow-sm">
+                <h4 className="text-[11px] font-black uppercase tracking-widest text-muted-foreground">
+                  Project Description & Background
                 </h4>
-                <p className="mt-3 text-base leading-relaxed text-foreground/90">
+                <p className="mt-2 text-sm sm:text-base leading-relaxed text-foreground/90 font-medium">
                   {selectedProject.description}
                 </p>
               </div>
 
-              <div className="mt-10 flex justify-end">
+              {/* Action Footer */}
+              <div className="mt-8 flex items-center justify-between border-t border-border/60 pt-6">
+                <span className="text-xs font-semibold text-muted-foreground">
+                  Response Spectrum Trading PLC · Grade One Building Consultancy
+                </span>
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="rounded-xl bg-primary px-6 py-3 text-xs font-bold uppercase tracking-wider text-primary-foreground shadow-md transition-all hover:bg-primary/90"
+                  className="rounded-xl bg-primary px-7 py-3 text-xs font-black uppercase tracking-widest text-primary-foreground shadow-md transition-all hover:bg-primary/90 hover:shadow-lg"
                 >
                   Close Window
                 </button>

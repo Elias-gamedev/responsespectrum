@@ -11,7 +11,7 @@ import oromiaMedia from '@/assets/oromia-media.jpg';
 
 // Illustrative placeholders & custom assets
 import imgOffice from '@/assets/placeholder-office.jpg';
-import imgResidential from '@/assets/placeholder-residential.jpg';
+import imgResidential from '@/assets/tinsaerealestate.png';
 import imgInstitutional from '@/assets/placeholder-institutional.jpg';
 import imgIndustrial from '@/assets/placeholder-industrial.jpg';
 import imgFuel from '@/assets/placeholder-fuel-station.jpg';
@@ -36,6 +36,18 @@ import logo1 from '@/assets/noclogo.jpg';
 import logo2 from '@/assets/oromiacourtlogo.png';
 import logo4 from '@/assets/mattsrealestatelogo.png';
 import logo3 from '@/assets/nyalainsulogo.jpg';
+import Mixeduse from '@/assets/apartmentpic.jpg';
+import shakaRS from '@/assets/shakaRS.jpg';
+import imgSebeta from '@/assets/sebetaMC.jpg';
+import imgOromiaAC from '@/assets/OromiaAC.jpg';
+import imgGojammed from '@/assets/gojammed.jpg';
+import imgficheG from '@/assets/ficheG.jpg';
+
+
+
+
+
+
 
 export const images = { 
   noclogo: logo1, 
@@ -65,7 +77,9 @@ export const images = {
   officeDesign: imgOfficeDesign, 
   structuraldesign: imgStructuraldesign, 
   constman: imgConstman, 
-  slidepicapartment: imgslidepicapartment 
+  slidepicapartment: imgslidepicapartment ,
+  imgMixeduse: Mixeduse ,
+  imgshakaRS: shakaRS,
 };
 
 export const company = {
@@ -111,6 +125,21 @@ export const services = [
   { title: 'Industrial and Specialized Structures', icon: Factory, image: imgIndustrial, description: 'Design and engineering consultancy for industrial facilities, factories, fuel stations, and other specialized structures.' },
   { title: 'Interior Design', icon: Waypoints, image: imgOfficeDesign, description: 'Design and engineering consultancy for interior design, including office spaces, apartments, and other commercial spaces.' },
   { title: 'Apartment Design', icon: Building2, image: imgApartmentBuilding, description: 'Design and engineering consultancy for apartment design, including apartment buildings, apartments, and other residential spaces.' },
+  {
+    id: 'facade-design',
+    title: 'Facade Design & Supervision',
+    subtitle: 'Building Enclosure & Exterior Architectural Engineering',
+    description: 'From concept to design development and finally to installation and delivery. We engineer aesthetic, structural, and high-performance exterior building envelopes.',
+    icon: ClipboardCheck, // or your preferred Lucide/custom icon component
+    features: [
+      'Conceptual Exterior Architectural Design',
+      'Detailed Design Development & Engineering',
+      'Structural & Material Specification Oversight',
+      'On-Site Installation Supervision & Quality Control',
+      'Final Envelope Delivery & Compliance Check',
+    ],
+    image: imgGenzebedibaba
+  },
 ];
 
 export const expertise = [
@@ -144,6 +173,8 @@ export type Project = {
   cost?: string;
   size?: string;
   status?: string;
+  assignment?: string;
+  assignmentTags?: string[];
 };
 
 const C = 'Commercial and Office Buildings', R = 'Residential and Mixed-Use Buildings', I = 'Institutional Buildings', N = 'Industrial Projects', W = 'Infrastructure and Water Projects', REL = 'Religious and Cultural Projects';
@@ -211,7 +242,7 @@ export const projects: Project[] = [
     name: 'Samket Mall', 
     category: C, 
     description: 'Commercial development with design revision and construction supervision services.', 
-    ...ill(imgResidential, 'Mixed-use building with shops at street level'),
+    ...ill(Mixeduse, 'Mixed-use building with shops at street level'),
     cost: '350 Million ETB',
     status: 'Completed'
   },
@@ -220,7 +251,7 @@ export const projects: Project[] = [
     name: 'Mixed-Use Building', 
     category: R, 
     description: 'Mixed-use building project (B+G+9) with design, construction supervision, and contract administration.', 
-    ...ill(imgResidential, 'Mixed-use building'),
+    ...ill(Mixeduse, 'Mixed-use building'),
     cost: '420 Million ETB',
     size: 'B+G+9',
     status: 'Completed'
@@ -239,18 +270,39 @@ export const projects: Project[] = [
     slug: 'sebeta-municipality', 
     name: 'Sebeta Municipality Building', 
     category: I, 
-    description: 'Municipal office development (2B+G+5+Roof Terrace, 11,000 m2). Assignment: Structural engineering design, structural revision, and site supervision.', 
+    description: 'Municipal office development (2B+G+5+Roof Terrace, 11,000 m2).', 
     ...ill(imgCivic, 'Sebeta Municipality structural engineering work'),
     cost: '540 Million ETB',
     size: '2B+G+5 (11,000 m2)',
-    status: 'Finishing Work Under Progress'
+    status: 'Finishing Work Under Progress',
+    // MANUALLY EDIT YOUR TEXT & TAGS HERE:
+    assignment: 'Structural engineering design',
+    assignmentTags: ['Structural Design',]
+  },
+  { 
+    slug: 'oil-factory', 
+    name: 'Oil Factory', 
+    category: N, 
+    description: 'Industrial oil factory design project for Ato Belayneh Kinde. Assignment: Design.', 
+    ...ill(imgIndustrial, 'Oil factory industrial plant'),
+    cost: '230 Million ETB',
+    status: 'Completed'
+  },
+  { 
+    slug: 'lgs-magnesium-factory', 
+    name: 'LGS & Magnesium Oxide Product Factory', 
+    category: N, 
+    description: 'Industrial manufacturing facility for Ybel Industrial Plc. Assignment: Design, construction supervision, and contract administration.', 
+    ...ill(imgIndustrial, 'LGS and Magnesium Oxide Factory'),
+    cost: '100 Million ETB',
+    status: 'Completed'
   },
   { 
     slug: 'oromia-administration-complex', 
     name: 'Oromia Administration Complex', 
     category: I, 
     description: 'Proposed administration project (4B+G+21+Roof Terrace, 38,000 m2) featuring rhombus facade views and structural modeling. Assignment: Design supervision and contract administration in association with ECO.', 
-    ...ill(imgHero, 'Contemporary building architecture'),
+    ...ill(imgOromiaAC, 'Contemporary building architecture'),
     cost: '6.4 Billion ETB',
     size: '4B+G+21 (38,000 m2)',
     status: 'Design Stage'
@@ -260,7 +312,7 @@ export const projects: Project[] = [
     name: 'Shaka Real Estate', 
     category: R, 
     description: 'Residential real estate development comprising seven blocks (G+8 each). Assignment: Design, construction supervision, and contract administration.', 
-    ...ill(imgResidential, 'Residential apartment blocks'),
+    ...ill(shakaRS, 'Residential apartment blocks'),
     cost: '2.5 Billion ETB',
     size: '7 Blocks (G+8)',
     status: 'Under Construction'
@@ -353,10 +405,13 @@ export const projects: Project[] = [
     slug: 'gidado-dam', 
     name: 'Gidabo Dam Project', 
     category: W, 
-    description: 'Water infrastructure project undertaken in collaboration with WWDSE. Assignment: Design, construction supervision, and contract administration.', 
+    description: 'Water infrastructure project undertaken in collaboration with WWDSE.', 
     ...ill(imgDam, 'Gidabo Dam structural works'),
     cost: '140 Million ETB',
-    status: 'Completed'
+    status: 'Completed',
+    // MANUALLY EDIT YOUR TEXT & TAGS HERE:
+    assignment: 'Specialized structural engineering design',
+    assignmentTags: ['Structer']
   },
   { 
     slug: 'kesem-tendaho-arjo', 
@@ -380,13 +435,6 @@ export const projects: Project[] = [
     ...ill(imgDam, 'Spillway and intake structure') 
   },
   { 
-    slug: 'modern-apartment-complex', 
-    name: 'Modern Apartment Complex Development', 
-    category: R, 
-    description: 'Contemporary apartment building and neighborhood development featuring optimized spatial planning.', 
-    ...ill(imgApartmentBuilding, 'Modern apartment complex') 
-  },
-  { 
     slug: 'luxury-interior-design', 
     name: 'Apartment & Project Interior Developments', 
     category: R, 
@@ -396,32 +444,23 @@ export const projects: Project[] = [
   { 
     slug: 'minjar-maryam', 
     name: 'Minjar Maryam Structural and Supervision Works', 
-    category: W, 
+    category: REL, 
     description: 'Specialized structural engineering and construction supervision works.', 
     ...ill(imgConstruction, 'Structural works on site') 
-  },
-  { 
-    slug: 'arerti-st-mary', 
-    name: 'Arerti St. Mary Church', 
-    category: REL, 
-    description: 'Design, construction supervision, and contract administration for the Ethiopian Orthodox Tewahedo Church project.', 
-    ...ill(imgCivic, 'Arerti St. Mary Church project'),
-    cost: '45 Million ETB',
-    status: 'Under Construction'
   },
   { 
     slug: 'gojam-medhanealem', 
     name: 'Gojam Medhanealem Church', 
     category: REL, 
     description: 'Structural design and architectural consultancy support including dome construction and site compound layout planning.', 
-    ...ill(imgHero, 'Gojam Medhanealem Church design')
+    ...ill(imgGojammed, 'Gojam Medhanealem Church design')
   },
   { 
     slug: 'fitche-st-gebriel', 
     name: 'Fitche St. Gebriel Proposal', 
     category: REL, 
     description: 'Proposal and structural design concept for Fitche St. Gebriel religious complex development.', 
-    ...ill(imgInstitutional, 'Fitche St. Gebriel architectural proposal')
+    ...ill(imgficheG, 'Fitche St. Gebriel architectural proposal')
   }
 ];
 
