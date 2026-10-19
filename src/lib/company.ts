@@ -1,19 +1,15 @@
 /**
  * RST website content — the single place to edit company details, services,
  * projects, images and social links. Layouts read everything from here.
- *
- * IMAGES: every project points at one file in src/assets. To use a real site
- * photo later, drop the file in src/assets, change the import below, and set
- * `photo: 'verified'` with its credit. Placeholder images are marked
- * `photo: 'illustrative'` and the site labels them as such — never mark a
- * placeholder as verified.
  */
 import { Building2, Ruler, Layers, HardHat, ClipboardCheck, Waypoints, Waves, Factory } from 'lucide-react';
-// Verified real project photographs (credited to their sources)
+
+// Verified real project photographs & custom assets
 import noc from '@/assets/noc-head-office .jpg';
 import goldenStar from '@/assets/golden-star.jpg';
 import oromiaMedia from '@/assets/oromia-media.jpg';
-// Illustrative placeholders — replace with client site photos when supplied
+
+// Illustrative placeholders & custom assets
 import imgOffice from '@/assets/placeholder-office.jpg';
 import imgResidential from '@/assets/placeholder-residential.jpg';
 import imgInstitutional from '@/assets/placeholder-institutional.jpg';
@@ -35,19 +31,48 @@ import imgOfficeDesign from '@/assets/officedesign.jpg';
 import imgStructuraldesign from '@/assets/images (3).jpg';
 import imgConstman from '@/assets/constman.png';
 import imgslidepicapartment from '@/assets/slidepicapartment.jpg';
-import imgOromiamediacomplex from '@/assets/oromiamediacomplex.jpg'
-import logo1 from '@/assets/noclogo.jpg'
-import logo2 from '@/assets/oromiacourtlogo.png'
-import logo4 from '@/assets/mattsrealestatelogo.png'
-import logo3 from '@/assets/nyalainsulogo.jpg'
+import imgOromiamediacomplex from '@/assets/oromiamediacomplex.jpg';
+import logo1 from '@/assets/noclogo.jpg';
+import logo2 from '@/assets/oromiacourtlogo.png';
+import logo4 from '@/assets/mattsrealestatelogo.png';
+import logo3 from '@/assets/nyalainsulogo.jpg';
 
-export const images = { noclogo: logo1, oromiacourtlogo: logo2, mattsrealestatelogo: logo4, nyalalogo: logo3, office: imgOffice, residential: imgResidential, institutional: imgInstitutional, industrial: imgIndustrial, fuel: imgFuel, dam: imgDam, bridge: imgBridge, construction: imgConstruction, hero: imgHero, civic: imgCivic, noc, goldenStar, oromiaMedia, slide5: slide5Image, slide6: slide6Image, slide7: slide7Image, apartmentBuilding: imgApartmentBuilding, mattsRealEstate: imgMattsRealEstate, genzebedibaba: imgGenzebedibaba, omoriaSC: imgOmoriaSC, officeDesign: imgOfficeDesign, structuraldesign: imgStructuraldesign, constman: imgConstman, slidepicapartment: imgslidepicapartment };
+export const images = { 
+  noclogo: logo1, 
+  oromiacourtlogo: logo2, 
+  mattsrealestatelogo: logo4, 
+  nyalalogo: logo3, 
+  office: imgOffice, 
+  residential: imgResidential, 
+  institutional: imgInstitutional, 
+  industrial: imgIndustrial, 
+  fuel: imgFuel, 
+  dam: imgDam, 
+  bridge: imgBridge, 
+  construction: imgConstruction, 
+  hero: imgHero, 
+  civic: imgCivic, 
+  noc, 
+  goldenStar, 
+  oromiaMedia, 
+  slide5: slide5Image, 
+  slide6: slide6Image, 
+  slide7: slide7Image, 
+  apartmentBuilding: imgApartmentBuilding, 
+  mattsRealEstate: imgMattsRealEstate, 
+  genzebedibaba: imgGenzebedibaba, 
+  omoriaSC: imgOmoriaSC, 
+  officeDesign: imgOfficeDesign, 
+  structuraldesign: imgStructuraldesign, 
+  constman: imgConstman, 
+  slidepicapartment: imgslidepicapartment 
+};
 
 export const company = {
   name: 'Response Spectrum Trading PLC',
   short: 'RST',
   positioning: 'Building and Infrastructure Consultancy',
-  summary: 'Building consultancy and engineering expertise across architectural design, structural engineering, construction management, construction supervision, and contract administration.',
+  summary: 'Grade One Building Consulting Company delivering architectural design, structural engineering, construction management, supervision, and contract administration.',
 };
 
 export const contact = {
@@ -57,17 +82,16 @@ export const contact = {
 };
 
 /**
- * Social profiles. Leave a URL empty ('') until the official profile is
- * supplied — empty links are hidden everywhere on the site.
+ * Social profiles. Leave a URL empty ('') until the official profile is supplied.
  */
 export const socialLinks: { network: 'Facebook' | 'LinkedIn' | 'Instagram' | 'YouTube'; url: string }[] = [
-  { network: 'Facebook', url: '' },  // TODO: official Facebook page URL
-  { network: 'LinkedIn', url: '' },  // TODO: official LinkedIn company URL
+  { network: 'Facebook', url: '' },
+  { network: 'LinkedIn', url: '' },
 ];
 export const activeSocialLinks = () => socialLinks.filter(link => link.url.trim() !== '');
 
 /**
- * this is partner logo slider
+ * Partner logo slider
  */
 export const partners = [
   { name: 'National Oil Ethiopia (NOC)', image: logo1 },
@@ -102,82 +126,272 @@ export const categories = ['All Projects', 'Commercial and Office Buildings', 'R
 export type Category = typeof categories[number];
 
 export type Project = {
-  slug: string; name: string; category: Exclude<Category, 'All Projects'>; description: string;
-  image: string; imageAlt: string;
+  slug: string; 
+  name: string; 
+  category: Exclude<Category, 'All Projects'>; 
+  description: string;
+  image: string; 
+  imageAlt: string;
   photo: 'verified' | 'illustrative';
-  photoCredit?: string; photoSource?: string;
+  cost?: string;
+  size?: string;
+  status?: string;
 };
 
 const C = 'Commercial and Office Buildings', R = 'Residential and Mixed-Use Buildings', I = 'Institutional Buildings', N = 'Industrial Projects', W = 'Infrastructure and Water Projects';
 const ill = (image: string, imageAlt: string) => ({ image, imageAlt: `${imageAlt} (illustrative image)`, photo: 'illustrative' as const });
 
 export const projects: Project[] = [
-  // image: src/assets/noc-head-office.jpg (verified)
-  { slug: 'noc-head-office', name: 'National Oil Ethiopia (NOC) Head Office', category: C, description: 'A major office development. RST’s documented assignment includes design, construction supervision, and contract administration. The company profile describes the project as completed.', image: slide5Image, imageAlt: 'National Oil Ethiopia headquarters with its curved glass tower', photo: 'verified', photoCredit: 'LESSO Ethiopia', photoSource: 'https://lessoethiopia.com/index.php/projects' },
-  // image: src/assets/placeholder-office.jpg
-  { slug: 'noc-parking-office', name: 'NOC Parking and Office Building', category: C, description: 'A parking and office development associated with National Oil Ethiopia. The profile lists design, construction supervision, and contract administration.', ...ill(imgOffice, 'Modern office building') },
-  // image: src/assets/golden-star.jpg (verified)
-  { slug: 'golden-star', name: 'Golden Star Mall and Office Complex', category: C, description: 'A large commercial development combining mall and office functions. RST’s documented assignment includes design, construction supervision, and contract administration.', image: goldenStar, imageAlt: 'Golden Star Building photographed during construction', photo: 'verified', photoCredit: 'EASE Engineering · Construction photo', photoSource: 'https://ease-int.com/projects/golden-star-building/' },
-  // image: src/assets/placeholder-office.jpg
-  { slug: 'nyala-insurance-hq', name: 'Nyala Insurance Headquarters', category: C, description: 'An office headquarters project. The profile describes RST’s involvement in construction supervision and contract administration.', ...ill(slide6Image, 'Glass office headquarters tower') },
-  // image: src/assets/oromia-media.jpg (verified)
-  { slug: 'oromia-media-complex', name: 'Oromia Media Complex', category: I, description: 'A large media complex. The documented assignment includes structural design-related work, construction supervision, and contract administration in association with other consultants.', image: imgOromiamediacomplex, imageAlt: 'Oromia Media Complex, the glass-fronted OBN headquarters in Addis Ababa', photo: 'verified', photoCredit: 'BES Consultants', photoSource: 'https://besconsultants.net/blogs/projects/media-complex-ethiopia' },
-  // image: src/assets/placeholder-residential.jpg
-  { slug: 'samket-mall', name: 'Samket Mall', category: C, description: 'A commercial development listed in the company profile, with design and construction consultancy involvement.', ...ill(imgResidential, 'Mixed-use building with shops at street level') },
-  // image: src/assets/placeholder-residential.jpg
-  { slug: 'pecan-mixed-use', name: 'Mixed-Use Building, Pecan Building Rental', category: R, description: 'A mixed-use building project listed in the company profile, with design and construction consultancy services.', ...ill(imgResidential, 'Mixed-use building') },
-  // image: src/assets/placeholder-institutional.jpg
-  { slug: 'oromia-supreme-court', name: 'Oromia Supreme Court', category: I, description: 'An institutional building. RST’s documented involvement includes structural design-related services, construction supervision, and contract administration in association with other consultants.', ...ill(imgOmoriaSC, 'Civic court building with columns') },
-  // image: src/assets/civic-building.jpg
-  { slug: 'sebeta-municipality', name: 'Sebeta Municipality Building', category: I, description: 'A municipal office development listed in the company profile, with design and supervision-related involvement.', ...ill(imgCivic, 'Contemporary civic building') },
-  // image: src/assets/architecture-hero.jpg
-  { slug: 'oromia-administration-complex', name: 'Oromia Administration Complex', category: I, description: 'A proposed administration complex included in the company profile, presented here as design-stage work.', ...ill(imgHero, 'Contemporary building architecture') },
-  // image: src/assets/placeholder-residential.jpg
-  { slug: 'shaka-real-estate', name: 'Shaka Real Estate', category: R, description: 'A real estate development comprising multiple building blocks, with structural and building consultancy experience.', ...ill(imgResidential, 'Residential apartment blocks') },
-  // image: src/assets/placeholder-construction.jpg
-  { slug: 'matts-real-estate', name: 'MATTS Real Estate', category: R, description: 'A residential building project listed in the company profile, with design, construction supervision, and contract administration.', ...ill(imgMattsRealEstate, 'Residential building under construction') },
-  // image: src/assets/placeholder-residential.jpg
-  { slug: 'tinsae-apartments', name: 'Tinsae Real Estate Apartment Project', category: R, description: 'A multi-storey apartment development listed in the company profile, with design and consultancy involvement.', ...ill(imgResidential, 'Multi-storey apartment building') },
-  // image: src/assets/placeholder-office.jpg
-  { slug: 'genzebe-dibaba-mall', name: 'Genzebe Dibaba Mall and Apartment', category: R, description: 'A mixed-use mall and apartment project included in the company profile.', ...ill(imgGenzebedibaba, 'Mixed-use tower') },
-  // image: src/assets/placeholder-construction.jpg
-  { slug: 'walelign-apartments', name: 'Walelign Real Estate Apartment Building', category: R, description: 'A residential apartment development listed in the company profile.', ...ill(imgApartmentBuilding, 'Apartment building under construction') },
-  // image: src/assets/architecture-hero.jpg
-  { slug: 'alemayehu-hotel', name: 'Ato Alemayehu Hotel', category: R, description: 'A hotel project with design and construction consultancy involvement described in the company profile.', ...ill(imgHero, 'Modern hotel architecture') },
-  // image: src/assets/placeholder-industrial.jpg
-  { slug: 'bright-paints-factory', name: 'Bright Paints Factory', category: N, description: 'An industrial project listed in the company profile, with design and construction consultancy services.', ...ill(imgIndustrial, 'Industrial factory building') },
-  // image: src/assets/placeholder-industrial.jpg
-  { slug: 'water-bottling-factory', name: 'Water Bottling Factory', category: N, description: 'A factory project included in the company profile.', ...ill(imgIndustrial, 'Factory building') },
-  // image: src/assets/placeholder-industrial.jpg
-  { slug: 'hangtong-wood-plant', name: 'Hangtong Wood Processing Plant', category: N, description: 'An industrial facility listed in the company profile, with design-related work.', ...ill(imgIndustrial, 'Industrial processing plant') },
-  // image: src/assets/placeholder-fuel-station.jpg — replace with client fuel station photos
-  { slug: 'fuel-station-designs', name: 'Fuel Station Designs', category: N, description: 'Design work for fuel stations. Project photographs from the client will be added here.', ...ill(imgFuel, 'Fuel station canopy') },
-  // image: src/assets/placeholder-dam.jpg
-  { slug: 'gidado-dam', name: 'Gidado Dam Project', category: W, description: 'A dam project identified in the company profile as being undertaken in collaboration with WWDSE.', ...ill(imgDam, 'Concrete dam with spillway') },
-  // image: src/assets/placeholder-dam.jpg
-  { slug: 'kesem-tendaho-arjo', name: 'Kesem, Tendaho, and Arjo-Dhidessa Dam-Related Works', category: W, description: 'The profile references intake tower, spillway, and dam-related structural work associated with these projects — specific structures, not delivery of the entire dams.', ...ill(imgDam, 'Dam intake tower and spillway') },
-  // image: src/assets/placeholder-bridge.jpg
-  { slug: 'bridges-infrastructure', name: 'Bridges and Infrastructure', category: W, description: 'A portfolio category for bridge and infrastructure consultancy. Verified project details and site photographs will be added when supplied.', ...ill(imgBridge, 'Concrete bridge over a river') },
-  // image: src/assets/placeholder-dam.jpg
-  { slug: 'intake-spillways', name: 'Intake Structures and Spillways', category: W, description: 'Water intake structures and spillways, drawing on the dam-related works referenced in the company profile.', ...ill(imgDam, 'Spillway and intake structure') },
-  // image: src/assets/placeholder-construction.jpg
-  // Add new apartment or interior project entries under projects array:
-{ 
-  slug: 'modern-apartment-complex', 
-  name: 'Modern Apartment Complex Development', 
-  category: 'Residential and Mixed-Use Buildings', 
-  description: 'Contemporary apartment building and neighborhood development featuring optimized spatial planning.', 
-  ...ill(imgApartmentBuilding, 'Modern apartment complex') 
-},
-{ 
-  slug: 'luxury-interior-design', 
-  name: 'Apartment & Project Interior Developments', 
-  category: 'Residential and Mixed-Use Buildings', 
-  description: 'Custom interior design and fit-out solutions for residential apartments and commercial spaces.', 
-  ...ill(imgOfficeDesign, 'Luxury interior design styling') 
-},
-  { slug: 'minjar-maryam', name: 'Minjar Maryam Structural and Supervision Works', category: W, description: 'Structural engineering and construction supervision works.', ...ill(imgConstruction, 'Structural works on site') },
-
+  { 
+    slug: 'noc-head-office', 
+    name: 'National Oil Ethiopia (NOC) Head Office', 
+    category: C, 
+    description: 'Completed corporate headquarters (3B+G+M+16+Roof Terrace, 21,500 m2 built-up area). Introduced the use of inclined columns for at least three floors for the first time in the country. Assignment: Design, construction supervision, and contract administration.', 
+    image: slide5Image, 
+    imageAlt: 'National Oil Ethiopia headquarters with its curved glass tower', 
+    photo: 'verified',
+    cost: '1.5 Billion ETB',
+    size: '3B+G+M+16 (21,500 m2)',
+    status: 'Completed & Delivered'
+  },
+  { 
+    slug: 'noc-parking-office', 
+    name: 'NOC Parking and Office Building', 
+    category: C, 
+    description: 'Parking and office development project (3B+G+M+17+Roof Terrace, 25,650 m2 built-up area) featuring post-tension slabs with 10 to 12-meter spans. Assignment: Design, construction supervision, and contract administration.', 
+    ...ill(imgOffice, 'Modern office building'),
+    cost: '2.4 Billion ETB',
+    size: '3B+G+M+17 (25,650 m2)',
+    status: 'Under Construction'
+  },
+  { 
+    slug: 'golden-star', 
+    name: 'Golden Star Mall and Office Complex', 
+    category: C, 
+    description: 'Large commercial development combining mall and office functions (4B+G+24+Roof Terrace, 28,000 m2) featuring post-tension slabs with 8 to 12-meter spans. Assignment: Design, construction supervision, and contract administration.', 
+    image: goldenStar, 
+    imageAlt: 'Golden Star Building photographed during construction', 
+    photo: 'verified',
+    cost: '4.4 Billion ETB',
+    size: '4B+G+24 (28,000 m2)',
+    status: 'Under Construction'
+  },
+  { 
+    slug: 'nyala-insurance-hq', 
+    name: 'Nyala Insurance Headquarters', 
+    category: C, 
+    description: 'Corporate office headquarters project (3B+G+19). Assignment: Construction supervision and contract administration.', 
+    ...ill(slide6Image, 'Glass office headquarters tower'),
+    cost: '3.1 Billion ETB',
+    size: '3B+G+19',
+    status: 'Under Construction'
+  },
+  { 
+    slug: 'oromia-media-complex', 
+    name: 'Oromia Media Complex', 
+    category: I, 
+    description: 'Major broadcasting complex (2B+G+12+Roof Terrace, 36,000 m2) featuring complex, column-free studios exceeding 600 m2. Assignment: Structural design revision, construction supervision, and contract administration in association with ECO.', 
+    image: imgOromiamediacomplex, 
+    imageAlt: 'Oromia Media Complex, the glass-fronted OBN headquarters in Addis Ababa', 
+    photo: 'verified',
+    cost: '5.4 Billion ETB',
+    size: '2B+G+12 (36,000 m2)',
+    status: 'Under Construction'
+  },
+  { 
+    slug: 'samket-mall', 
+    name: 'Samket Mall', 
+    category: C, 
+    description: 'Commercial development with design revision and construction supervision services.', 
+    ...ill(imgResidential, 'Mixed-use building with shops at street level'),
+    cost: '350 Million ETB',
+    status: 'Completed'
+  },
+  { 
+    slug: 'pecan-mixed-use', 
+    name: 'Mixed-Use Building', 
+    category: R, 
+    description: 'Mixed-use building project (B+G+9) with design, construction supervision, and contract administration.', 
+    ...ill(imgResidential, 'Mixed-use building'),
+    cost: '420 Million ETB',
+    size: 'B+G+9',
+    status: 'Completed'
+  },
+  { 
+    slug: 'oromia-supreme-court', 
+    name: 'Oromia Supreme Court', 
+    category: I, 
+    description: 'Institutional headquarters featuring judge rooms and main entrances with over 20-meter spans (2B+G+14+Roof Terrace, 42,000 m2). Assignment: Structural design and construction supervision in association with ECO.', 
+    ...ill(imgOmoriaSC, 'Civic court building with columns'),
+    cost: '4.4 Billion ETB',
+    size: '2B+G+14 (42,000 m2)',
+    status: 'Under Construction'
+  },
+  { 
+    slug: 'sebeta-municipality', 
+    name: 'Sebeta Municipality Building', 
+    category: 'Institutional Buildings', 
+    description: 'Municipal office development (2B+G+5+Roof Terrace, 11,000 m2). Assignment: Structural engineering design, structural revision, and site supervision.', 
+    ...ill(imgCivic, 'Sebeta Municipality structural engineering work'),
+    cost: '540 Million ETB',
+    size: '2B+G+5 (11,000 m2)',
+    status: 'Finishing Work Under Progress'
+  },
+  { 
+    slug: 'oromia-administration-complex', 
+    name: 'Oromia Administration Complex', 
+    category: I, 
+    description: 'Proposed administration project (4B+G+21+Roof Terrace, 38,000 m2) featuring rhombus facade views and structural modeling. Assignment: Design supervision and contract administration in association with ECO.', 
+    ...ill(imgHero, 'Contemporary building architecture'),
+    cost: '6.4 Billion ETB',
+    size: '4B+G+21 (38,000 m2)',
+    status: 'Design Stage'
+  },
+  { 
+    slug: 'shaka-real-estate', 
+    name: 'Shaka Real Estate', 
+    category: R, 
+    description: 'Residential real estate development comprising seven blocks (G+8 each). Assignment: Design, construction supervision, and contract administration.', 
+    ...ill(imgResidential, 'Residential apartment blocks'),
+    cost: '2.5 Billion ETB',
+    size: '7 Blocks (G+8)',
+    status: 'Under Construction'
+  },
+  { 
+    slug: 'matts-real-estate', 
+    name: 'MATTS Real Estate', 
+    category: R, 
+    description: 'Residential apartment building project (3B+G+14+Roof Terrace, 18,000 m2). Assignment: Design revision, construction supervision, and contract administration.', 
+    ...ill(imgMattsRealEstate, 'Residential building under construction'),
+    cost: '900 Million ETB',
+    size: '3B+G+14 (18,000 m2)',
+    status: 'Under Construction'
+  },
+  { 
+    slug: 'tinsae-apartments', 
+    name: 'Tinsae Real Estate Apartment Project', 
+    category: R, 
+    description: 'Multi-storey apartment development (3B+G+19+Roof Terrace, 25,000 m2). Assignment: Design supervision and contract administration in association with Invent.', 
+    ...ill(imgResidential, 'Multi-storey apartment building'),
+    cost: '1.5 Billion ETB',
+    size: '3B+G+19 (25,000 m2)',
+    status: 'Under Construction'
+  },
+  { 
+    slug: 'genzebe-dibaba-mall', 
+    name: 'Genzebe Dibaba Mall and Apartment', 
+    category: R, 
+    description: 'Mixed-use mall and apartment project in Legetafo (1B+G+4+Roof Terrace, 8,000 m2). Assignment: Structural design in association with Zedor.', 
+    ...ill(imgGenzebedibaba, 'Mixed-use tower'),
+    cost: '150 Million ETB',
+    size: '1B+G+4 (8,000 m2)',
+    status: 'Under Construction'
+  },
+  { 
+    slug: 'walelign-apartments', 
+    name: 'Walelign Real Estate Apartment Building', 
+    category: R, 
+    description: 'Residential apartment development (1B+G+5+Roof Terrace, 3,000 m2). Assignment: Design supervision and contract administration.', 
+    ...ill(imgApartmentBuilding, 'Apartment building under construction'),
+    cost: '300 Million ETB',
+    size: '1B+G+5 (3,000 m2)',
+    status: 'Under Construction'
+  },
+  { 
+    slug: 'alemayehu-hotel', 
+    name: 'Ato Alemayehu Hotel', 
+    category: R, 
+    description: 'Hotel project featuring custom zig-zag balcony structures (2B+G+9+Roof Terrace, 13,000 m2). Assignment: Structural design supervision and contract administration.', 
+    ...ill(imgHero, 'Modern hotel architecture'),
+    cost: '800 Million ETB',
+    size: '2B+G+9 (13,000 m2)',
+    status: 'Finishing Work Under Progress'
+  },
+  { 
+    slug: 'bright-paints-factory', 
+    name: 'Bright Paints Factory', 
+    category: N, 
+    description: 'Industrial facility project. Assignment: Design, construction supervision, and contract administration.', 
+    ...ill(imgIndustrial, 'Industrial factory building'),
+    cost: '58 Million ETB',
+    status: 'Completed'
+  },
+  { 
+    slug: 'water-bottling-factory', 
+    name: 'Water Bottling Factory', 
+    category: N, 
+    description: 'Industrial manufacturing facility. Assignment: Design, construction, and supervision.', 
+    ...ill(imgIndustrial, 'Factory building'),
+    cost: '55 Million ETB',
+    status: 'Completed'
+  },
+  { 
+    slug: 'hangtong-wood-plant', 
+    name: 'Hangtong Wood Processing Plant', 
+    category: N, 
+    description: 'Industrial processing plant. Assignment: Architectural and structural design.', 
+    ...ill(imgIndustrial, 'Industrial processing plant'),
+    cost: '150 Million ETB',
+    status: 'Completed'
+  },
+  { 
+    slug: 'fuel-station-designs', 
+    name: 'Fuel Station Designs', 
+    category: N, 
+    description: 'Specialized structural and canopy design work for fuel service stations.', 
+    ...ill(imgFuel, 'Fuel station canopy') 
+  },
+  { 
+    slug: 'gidado-dam', 
+    name: 'Gidabo Dam Project', 
+    category: 'Infrastructure and Water Projects', 
+    description: 'Water infrastructure project undertaken in collaboration with WWDSE. Assignment: Design, construction supervision, and contract administration.', 
+    ...ill(imgDam, 'Gidabo Dam structural works'),
+    cost: '140 Million ETB',
+    status: 'Completed'
+  },
+  { 
+    slug: 'kesem-tendaho-arjo', 
+    name: 'Kesem, Tendaho, and Arjo-Dhidessa Dam-Related Works', 
+    category: W, 
+    description: 'Specialized structural engineering works for intake towers and spillway structures associated with major regional dam projects.', 
+    ...ill(imgDam, 'Dam intake tower and spillway') 
+  },
+  { 
+    slug: 'bridges-infrastructure', 
+    name: 'Bridges and Infrastructure', 
+    category: W, 
+    description: 'Bridge engineering and civil infrastructure consultancy services.', 
+    ...ill(imgBridge, 'Concrete bridge over a river') 
+  },
+  { 
+    slug: 'intake-spillways', 
+    name: 'Intake Structures and Spillways', 
+    category: W, 
+    description: 'Specialized structural design and analysis for water intake structures and spillway systems.', 
+    ...ill(imgDam, 'Spillway and intake structure') 
+  },
+  { 
+    slug: 'modern-apartment-complex', 
+    name: 'Modern Apartment Complex Development', 
+    category: 'Residential and Mixed-Use Buildings', 
+    description: 'Contemporary apartment building and neighborhood development featuring optimized spatial planning.', 
+    ...ill(imgApartmentBuilding, 'Modern apartment complex') 
+  },
+  { 
+    slug: 'luxury-interior-design', 
+    name: 'Apartment & Project Interior Developments', 
+    category: 'Residential and Mixed-Use Buildings', 
+    description: 'Custom interior design and fit-out solutions for residential apartments and commercial spaces.', 
+    ...ill(imgOfficeDesign, 'Luxury interior design styling') 
+  },
+  { 
+    slug: 'minjar-maryam', 
+    name: 'Minjar Maryam Structural and Supervision Works', 
+    category: W, 
+    description: 'Specialized structural engineering and construction supervision works.', 
+    ...ill(imgConstruction, 'Structural works on site') 
+  },
 ];
 
 export const featuredSlugs = ['noc-head-office', 'golden-star', 'oromia-supreme-court', 'oromia-media-complex', 'noc-parking-office', 'nyala-insurance-hq', 'sebeta-municipality', 'gidado-dam'];
