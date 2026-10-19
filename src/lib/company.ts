@@ -122,7 +122,15 @@ export const expertise = [
   { title: 'Infrastructure and water-related structures', image: imgDam, text: 'Dam-related structures, spillways, and intake works.' },
 ];
 
-export const categories = ['All Projects', 'Commercial and Office Buildings', 'Residential and Mixed-Use Buildings', 'Institutional Buildings', 'Industrial Projects', 'Infrastructure and Water Projects'] as const;
+export const categories = [
+  'All Projects', 
+  'Commercial and Office Buildings', 
+  'Residential and Mixed-Use Buildings', 
+  'Institutional Buildings', 
+  'Industrial Projects', 
+  'Infrastructure and Water Projects',
+  'Religious and Cultural Projects'
+] as const;
 export type Category = typeof categories[number];
 
 export type Project = {
@@ -138,7 +146,7 @@ export type Project = {
   status?: string;
 };
 
-const C = 'Commercial and Office Buildings', R = 'Residential and Mixed-Use Buildings', I = 'Institutional Buildings', N = 'Industrial Projects', W = 'Infrastructure and Water Projects';
+const C = 'Commercial and Office Buildings', R = 'Residential and Mixed-Use Buildings', I = 'Institutional Buildings', N = 'Industrial Projects', W = 'Infrastructure and Water Projects', REL = 'Religious and Cultural Projects';
 const ill = (image: string, imageAlt: string) => ({ image, imageAlt: `${imageAlt} (illustrative image)`, photo: 'illustrative' as const });
 
 export const projects: Project[] = [
@@ -230,7 +238,7 @@ export const projects: Project[] = [
   { 
     slug: 'sebeta-municipality', 
     name: 'Sebeta Municipality Building', 
-    category: 'Institutional Buildings', 
+    category: I, 
     description: 'Municipal office development (2B+G+5+Roof Terrace, 11,000 m2). Assignment: Structural engineering design, structural revision, and site supervision.', 
     ...ill(imgCivic, 'Sebeta Municipality structural engineering work'),
     cost: '540 Million ETB',
@@ -344,7 +352,7 @@ export const projects: Project[] = [
   { 
     slug: 'gidado-dam', 
     name: 'Gidabo Dam Project', 
-    category: 'Infrastructure and Water Projects', 
+    category: W, 
     description: 'Water infrastructure project undertaken in collaboration with WWDSE. Assignment: Design, construction supervision, and contract administration.', 
     ...ill(imgDam, 'Gidabo Dam structural works'),
     cost: '140 Million ETB',
@@ -374,14 +382,14 @@ export const projects: Project[] = [
   { 
     slug: 'modern-apartment-complex', 
     name: 'Modern Apartment Complex Development', 
-    category: 'Residential and Mixed-Use Buildings', 
+    category: R, 
     description: 'Contemporary apartment building and neighborhood development featuring optimized spatial planning.', 
     ...ill(imgApartmentBuilding, 'Modern apartment complex') 
   },
   { 
     slug: 'luxury-interior-design', 
     name: 'Apartment & Project Interior Developments', 
-    category: 'Residential and Mixed-Use Buildings', 
+    category: R, 
     description: 'Custom interior design and fit-out solutions for residential apartments and commercial spaces.', 
     ...ill(imgOfficeDesign, 'Luxury interior design styling') 
   },
@@ -392,6 +400,29 @@ export const projects: Project[] = [
     description: 'Specialized structural engineering and construction supervision works.', 
     ...ill(imgConstruction, 'Structural works on site') 
   },
+  { 
+    slug: 'arerti-st-mary', 
+    name: 'Arerti St. Mary Church', 
+    category: REL, 
+    description: 'Design, construction supervision, and contract administration for the Ethiopian Orthodox Tewahedo Church project.', 
+    ...ill(imgCivic, 'Arerti St. Mary Church project'),
+    cost: '45 Million ETB',
+    status: 'Under Construction'
+  },
+  { 
+    slug: 'gojam-medhanealem', 
+    name: 'Gojam Medhanealem Church', 
+    category: REL, 
+    description: 'Structural design and architectural consultancy support including dome construction and site compound layout planning.', 
+    ...ill(imgHero, 'Gojam Medhanealem Church design')
+  },
+  { 
+    slug: 'fitche-st-gebriel', 
+    name: 'Fitche St. Gebriel Proposal', 
+    category: REL, 
+    description: 'Proposal and structural design concept for Fitche St. Gebriel religious complex development.', 
+    ...ill(imgInstitutional, 'Fitche St. Gebriel architectural proposal')
+  }
 ];
 
 export const featuredSlugs = ['noc-head-office', 'golden-star', 'oromia-supreme-court', 'oromia-media-complex', 'noc-parking-office', 'nyala-insurance-hq', 'sebeta-municipality', 'gidado-dam'];

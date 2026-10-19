@@ -9,37 +9,43 @@ export const Route = createFileRoute('/projects')({
 });
 
 const categoryDetails: Record<Exclude<Category, 'All Projects'>, { subtitle: string; description: string; image: string; highlights: string[] }> = {
-  'Commercial and Office Buildings': {
-    subtitle: 'Commercial & High-Rise Architecture',
-    description: 'Iconic commercial towers, corporate headquarters, shopping malls, and multi-functional complexes engineered for maximum urban impact.',
-    image: images.noc,
-    highlights: ['NOC Head Office', 'Golden Star Mall', 'Nyala Insurance HQ', 'Samket Mall'],
-  },
-  'Residential and Mixed-Use Buildings': {
-    subtitle: 'Residential Living & Apartments',
-    description: 'Multi-family apartment developments, high-end real estate complexes, neighborhood master planning, and bespoke interior fit-outs.',
-    image: images.slidepicapartment || images.residential,
-    highlights: ['Tinsae Real Estate', 'MATTS Real Estate', 'Genzebe Dibaba Apartments', 'Interior Design'],
-  },
-  'Institutional Buildings': {
-    subtitle: 'Civic & Public Infrastructure',
-    description: 'State-of-the-art media broadcasting complexes, judicial courts, municipal administration centers, and public service buildings.',
-    image: images.oromiaMedia,
-    highlights: ['Oromia Media Complex', 'Oromia Supreme Court', 'Sebeta Municipality', 'Administration Complex'],
-  },
-  'Industrial Projects': {
-    subtitle: 'Industrial Facilities & Plant Design',
-    description: 'Advanced industrial structures, heavy manufacturing factories, wood processing plants, and specialized fuel station engineering.',
-    image: images.industrial,
-    highlights: ['Bright Paints Factory', 'Hangtong Wood Processing', 'Water Bottling Plant', 'Fuel Stations'],
-  },
-  'Infrastructure and Water Projects': {
-    subtitle: 'Heavy Engineering & Water Structures',
-    description: 'Specialized structural engineering for major dams, intake towers, spillway systems, bridge consultancy, and civil works.',
-    image: images.dam,
-    highlights: ['Gidabo Dam Project', 'Kesem & Tendaho Works', 'Bridges Consultancy', 'Minjar Maryam Works'],
-  },
-};
+    'Commercial and Office Buildings': {
+      subtitle: 'Commercial & High-Rise Architecture',
+      description: 'Iconic commercial towers, corporate headquarters, shopping malls, and multi-functional complexes engineered for maximum urban impact.',
+      image: images.noc,
+      highlights: ['NOC Head Office', 'Golden Star Mall', 'Nyala Insurance HQ', 'Samket Mall'],
+    },
+    'Residential and Mixed-Use Buildings': {
+      subtitle: 'Residential Living & Apartments',
+      description: 'Multi-family apartment developments, high-end real estate complexes, neighborhood master planning, and bespoke interior fit-outs.',
+      image: images.slidepicapartment || images.residential,
+      highlights: ['Tinsae Real Estate', 'MATTS Real Estate', 'Genzebe Dibaba Apartments', 'Interior Design'],
+    },
+    'Institutional Buildings': {
+      subtitle: 'Civic & Public Infrastructure',
+      description: 'State-of-the-art media broadcasting complexes, judicial courts, municipal administration centers, and public service buildings.',
+      image: images.oromiaMedia,
+      highlights: ['Oromia Media Complex', 'Oromia Supreme Court', 'Sebeta Municipality', 'Administration Complex'],
+    },
+    'Industrial Projects': {
+      subtitle: 'Industrial Facilities & Plant Design',
+      description: 'Advanced industrial structures, heavy manufacturing factories, wood processing plants, and specialized fuel station engineering.',
+      image: images.industrial,
+      highlights: ['Bright Paints Factory', 'Hangtong Wood Processing', 'Water Bottling Plant', 'Fuel Stations'],
+    },
+    'Infrastructure and Water Projects': {
+      subtitle: 'Heavy Engineering & Water Structures',
+      description: 'Specialized structural engineering for major dams, intake towers, spillway systems, bridge consultancy, and civil works.',
+      image: images.dam,
+      highlights: ['Gidabo Dam Project', 'Kesem & Tendaho Works', 'Bridges Consultancy', 'Minjar Maryam Works'],
+    },
+    'Religious and Cultural Projects': {
+      subtitle: 'Sacred Architecture & Heritage',
+      description: 'Structural engineering, architectural design, and construction supervision for churches, cathedrals, and cultural monuments.',
+      image: images.construction,
+      highlights: ['Arerti St. Mary Church', 'Minjar Maryam Works', 'Gojam Medhanealem Church', 'Fitche St. Gebriel Proposal'],
+    },
+  };
 
 function ProjectsPage() {
   const [activeCategory, setActiveCategory] = useState<Exclude<Category, 'All Projects'> | null>(null);
@@ -68,6 +74,7 @@ function ProjectsPage() {
                 : 'Explore our documented legacy of structural engineering, architectural consultancy, and construction supervision across Ethiopia.'}
             </p>
 
+            {/* ACTION NAV BACK */}
             {activeCategory && (
               <div className="mt-8">
                 <button
@@ -165,7 +172,7 @@ function ProjectsPage() {
                   {activeCategory}
                 </h2>
                 <p className="mt-3 text-base text-muted-foreground max-w-2xl">
-                  Click on any project below to view its complete engineering specifications and project profile.
+                  Click on any project below to view its full architectural details and documented scope.
                 </p>
               </div>
 
@@ -198,7 +205,7 @@ function ProjectsPage() {
                       </div>
                     </div>
 
-                    {/* CLEAN CONTENT (NO CREDITS SHOWN) */}
+                    {/* CLEAN CONTENT (SOURCE/CREDIT REMOVED FROM MAIN GRID) */}
                     <div className="flex flex-1 flex-col justify-between p-8 -mt-6 relative z-10">
                       <div>
                         <span className="text-[11px] font-black uppercase tracking-widest text-primary">
@@ -214,7 +221,7 @@ function ProjectsPage() {
 
                       <div className="mt-6 flex items-center justify-between border-t border-border/60 pt-4">
                         <span className="text-xs font-bold text-primary group-hover:underline">
-                          View Complete Project Specifications →
+                          View Project Details & Scope →
                         </span>
                       </div>
                     </div>
@@ -242,6 +249,7 @@ function ProjectsPage() {
             className="relative max-h-[90vh] w-full max-w-4xl overflow-y-auto rounded-3xl border border-border bg-background shadow-2xl transition-all"
             onClick={(e) => e.stopPropagation()}
           >
+            {/* CLOSE BUTTON */}
             <button
               onClick={() => setSelectedProject(null)}
               className="absolute top-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-background/80 text-foreground backdrop-blur-md transition-all hover:bg-primary hover:text-primary-foreground"
@@ -249,6 +257,7 @@ function ProjectsPage() {
               ✕
             </button>
 
+            {/* MODAL HERO IMAGE */}
             <div className="relative aspect-[16/9] w-full overflow-hidden bg-muted">
               <img
                 src={selectedProject.image}
@@ -268,6 +277,7 @@ function ProjectsPage() {
               </div>
             </div>
 
+            {/* MODAL CONTENT BODY */}
             <div className="p-8 sm:p-12">
               <span className="text-xs font-black uppercase tracking-widest text-primary">
                 {selectedProject.category}
@@ -276,33 +286,9 @@ function ProjectsPage() {
                 {selectedProject.name}
               </h2>
 
-              {/* PROFILE SPECS BADGES (COST, SIZE, STATUS) */}
-              {(selectedProject.cost || selectedProject.size || selectedProject.status) && (
-                <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 rounded-2xl bg-muted/50 p-5 border border-border/60">
-                  {selectedProject.cost && (
-                    <div>
-                      <span className="block text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Project Cost</span>
-                      <span className="text-sm font-black text-foreground">{selectedProject.cost}</span>
-                    </div>
-                  )}
-                  {selectedProject.size && (
-                    <div>
-                      <span className="block text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Scale & Size</span>
-                      <span className="text-sm font-black text-foreground">{selectedProject.size}</span>
-                    </div>
-                  )}
-                  {selectedProject.status && (
-                    <div>
-                      <span className="block text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Project Status</span>
-                      <span className="text-sm font-black text-emerald-600 dark:text-emerald-400">{selectedProject.status}</span>
-                    </div>
-                  )}
-                </div>
-              )}
-
-              <div className="mt-8 border-t border-border/60 pt-6">
+              <div className="mt-6 border-t border-border/60 pt-6">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
-                  Scope & Engineering Assignment
+                  Documented Assignment & Scope
                 </h4>
                 <p className="mt-3 text-base leading-relaxed text-foreground/90">
                   {selectedProject.description}
