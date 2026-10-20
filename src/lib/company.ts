@@ -42,6 +42,10 @@ import imgSebeta from '@/assets/sebetaMC.jpg';
 import imgOromiaAC from '@/assets/OromiaAC.jpg';
 import imgGojammed from '@/assets/gojammed.jpg';
 import imgficheG from '@/assets/ficheG.jpg';
+import archdesign from '@/assets/archdesign.jpg';
+import contractadmin from '@/assets/contractadmin.jpg';
+
+
 
 
 
@@ -80,6 +84,7 @@ export const images = {
   slidepicapartment: imgslidepicapartment ,
   imgMixeduse: Mixeduse ,
   imgshakaRS: shakaRS,
+  Oromiamediacomplex:imgOromiamediacomplex
 };
 
 export const company = {
@@ -114,12 +119,79 @@ export const partners = [
   { name: 'Matts Real estate', image: logo4 },
 ];
 
+/*keyteam members */
+
+export type TeamMember = {
+  name: string;
+  position: string;
+  qualification: string;
+  assignment: string;
+  isLeadership?: boolean;
+};
+
+export const keyPersonnel: TeamMember[] = [
+  {
+    name: 'Ashenafi Shiferaw',
+    position: 'General Manager & Principal Structural Engineer',
+    qualification: 'PhD, MSc in Structural Engineering',
+    assignment: 'Practicing Professional Structural Engineer & Manager of the Company. Senior Structural Lead, Coordinator of Architectural & Engineering Teams, Overall Supervision & Quality Sign-Off.',
+    isLeadership: true,
+  },
+  {
+    name: 'Meron Wondafrash',
+    position: 'Senior Structural Engineer & Technical Lead',
+    qualification: 'PhD, MSc in Structural Engineering',
+    assignment: 'Practicing Professional Structural Engineer. Structural Engineering Design, Structural Revisions, and Project Technical Oversight.',
+    isLeadership: true,
+  },
+  {
+    name: 'Hahu Baharu',
+    position: 'Lead Architect',
+    qualification: 'MSc, BSc in Architecture & Town Planning',
+    assignment: 'Practicing Professional Architect. Architectural Planning, Master Planning, Spatial Concepts & Exterior Design.',
+    isLeadership: true,
+  },
+];
+
+export const organizationalDepartments = [
+  {
+    name: 'General Manager',
+    roles: ['Overall Company Management & Strategic Oversight'],
+  },
+  {
+    name: 'Design Team',
+    roles: [
+      'Project Coordinator',
+      'Architects',
+      'Structural Engineers',
+      'Mechanical Engineers',
+      'Sanitary Engineers',
+    ],
+  },
+  {
+    name: 'Contract Administration & Supervision',
+    roles: [
+      'Project Manager',
+      'Contract Engineer',
+      'Quantity Surveyor',
+      'Office Engineer',
+      'Resident Engineer',
+      'Assistant Resident Engineer',
+      'Surveyor',
+    ],
+  },
+  {
+    name: 'Financial Department',
+    roles: ['Financial Management & Project Cost Control'],
+  },
+];
+
 export const services = [
-  { title: 'Architectural Design', icon: Building2, image: imgHero, description: 'Architectural planning and building design for residential, commercial, office, mixed-use, institutional, and other building projects.' },
+  { title: 'Architectural Design', icon: Building2, image: archdesign, description: 'Architectural planning and building design for residential, commercial, office, mixed-use, institutional, and other building projects.' },
   { title: 'Structural Engineering', icon: Ruler, image: imgStructuraldesign, description: 'Structural design, structural design revision, engineering coordination, and structural investigation where required.' },
   { title: 'Building Consultancy and Engineering', icon: Layers, image: imgCivic, description: 'Multidisciplinary consultancy incorporating architectural, structural, electrical, mechanical, and sanitary engineering disciplines.' },
   { title: 'Construction Management and Supervision', icon: HardHat, image: imgConstman, description: 'Construction-phase oversight, site coordination, quality monitoring, progress supervision, and checking work against approved designs and specifications.' },
-  { title: 'Contract Administration', icon: ClipboardCheck, image: imgOffice, description: 'Support with construction contract administration, contractual requirements, documentation, and project delivery processes.' },
+  { title: 'Contract Administration', icon: ClipboardCheck, image: contractadmin, description: 'Support with construction contract administration, contractual requirements, documentation, and project delivery processes.' },
   { title: 'Project Management', icon: Waypoints, image: imgResidential, description: 'Project planning, design and procurement coordination, stakeholder communication, and monitoring of time, cost, quality, and safety.' },
   { title: 'Infrastructure and Water-Related Structures', icon: Waves, image: imgDam, description: 'Engineering consultancy experience associated with dams and related structures, including spillways, intake structures, and other water infrastructure.' },
   { title: 'Industrial and Specialized Structures', icon: Factory, image: imgIndustrial, description: 'Design and engineering consultancy for industrial facilities, factories, fuel stations, and other specialized structures.' },
@@ -144,10 +216,10 @@ export const services = [
 
 export const expertise = [
   { title: 'Architectural and building design', image: imgHero, text: 'Buildings planned around function, quality, and lasting value.' },
-  { title: 'Structural engineering', image: imgConstruction, text: 'Structural design, revision, and investigation.' },
+  { title: 'Structural engineering', image: imgOromiaAC, text: 'Structural design, revision, and investigation.' },
   { title: 'Construction management and supervision', image: imgCivic, text: 'Site oversight against approved designs and specifications.' },
-  { title: 'Contract administration', image: imgOffice, text: 'Contractual coordination, documentation, and delivery processes.' },
-  { title: 'Project management', image: imgResidential, text: 'Planning and monitoring of time, cost, quality, and safety.' },
+  { title: 'Contract administration', image: contractadmin, text: 'Contractual coordination, documentation, and delivery processes.' },
+  { title: 'Project management', image: imgConstman, text: 'Planning and monitoring of time, cost, quality, and safety.' },
   { title: 'Infrastructure and water-related structures', image: imgDam, text: 'Dam-related structures, spillways, and intake works.' },
 ];
 
@@ -169,7 +241,6 @@ export type Project = {
   description: string;
   image: string; 
   imageAlt: string;
-  photo: 'verified' | 'illustrative';
   cost?: string;
   size?: string;
   status?: string;
@@ -178,7 +249,7 @@ export type Project = {
 };
 
 const C = 'Commercial and Office Buildings', R = 'Residential and Mixed-Use Buildings', I = 'Institutional Buildings', N = 'Industrial Projects', W = 'Infrastructure and Water Projects', REL = 'Religious and Cultural Projects';
-const ill = (image: string, imageAlt: string) => ({ image, imageAlt: `${imageAlt} (illustrative image)`, photo: 'illustrative' as const });
+const ill = (image: string, imageAlt: string) => ({ image, imageAlt: `${imageAlt} (image)`, photo: 'image' as const });
 
 export const projects: Project[] = [
   { 
@@ -188,7 +259,6 @@ export const projects: Project[] = [
     description: 'Completed corporate headquarters (3B+G+M+16+Roof Terrace, 21,500 m2 built-up area). Introduced the use of inclined columns for at least three floors for the first time in the country. Assignment: Design, construction supervision, and contract administration.', 
     image: slide5Image, 
     imageAlt: 'National Oil Ethiopia headquarters with its curved glass tower', 
-    photo: 'verified',
     cost: '1.5 Billion ETB',
     size: '3B+G+M+16 (21,500 m2)',
     status: 'Completed & Delivered'
@@ -210,7 +280,7 @@ export const projects: Project[] = [
     description: 'Large commercial development combining mall and office functions (4B+G+24+Roof Terrace, 28,000 m2) featuring post-tension slabs with 8 to 12-meter spans. Assignment: Design, construction supervision, and contract administration.', 
     image: goldenStar, 
     imageAlt: 'Golden Star Building photographed during construction', 
-    photo: 'verified',
+
     cost: '4.4 Billion ETB',
     size: '4B+G+24 (28,000 m2)',
     status: 'Under Construction'
@@ -232,7 +302,6 @@ export const projects: Project[] = [
     description: 'Major broadcasting complex (2B+G+12+Roof Terrace, 36,000 m2) featuring complex, column-free studios exceeding 600 m2. Assignment: Structural design revision, construction supervision, and contract administration in association with ECO.', 
     image: imgOromiamediacomplex, 
     imageAlt: 'Oromia Media Complex, the glass-fronted OBN headquarters in Addis Ababa', 
-    photo: 'verified',
     cost: '5.4 Billion ETB',
     size: '2B+G+12 (36,000 m2)',
     status: 'Under Construction'
@@ -271,7 +340,7 @@ export const projects: Project[] = [
     name: 'Sebeta Municipality Building', 
     category: I, 
     description: 'Municipal office development (2B+G+5+Roof Terrace, 11,000 m2).', 
-    ...ill(imgCivic, 'Sebeta Municipality structural engineering work'),
+    ...ill(imgSebeta, 'Sebeta Municipality structural engineering work'),
     cost: '540 Million ETB',
     size: '2B+G+5 (11,000 m2)',
     status: 'Finishing Work Under Progress',

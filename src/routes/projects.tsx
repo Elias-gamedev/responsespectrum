@@ -192,17 +192,7 @@ function ProjectsPage() {
                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                         loading="lazy"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
-
-                      <div className="absolute top-4 right-4 z-10">
-                        <span className={`rounded-full px-4 py-1.5 text-[10px] font-black tracking-wider uppercase shadow-lg backdrop-blur-md border ${
-                          project.photo === 'verified'
-                            ? 'bg-emerald-600 text-white border-emerald-500'
-                            : 'bg-background/90 text-foreground border-border/80'
-                        }`}>
-                          {project.photo === 'verified' ? '✓ Verified Site Project' : 'Illustrative Study'}
-                        </span>
-                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" /> 
                     </div>
 
                     {/* CLEAN CONTENT (SOURCE/CREDIT REMOVED FROM MAIN GRID) */}
@@ -266,16 +256,6 @@ function ProjectsPage() {
                 className="h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
-              
-              <div className="absolute top-5 left-5 z-20">
-                <span className={`inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-[10px] font-black tracking-widest uppercase shadow-lg backdrop-blur-md border ${
-                  selectedProject.photo === 'verified'
-                    ? 'bg-emerald-600/90 text-white border-emerald-500'
-                    : 'bg-background/90 text-foreground border-border/80'
-                }`}>
-                  {selectedProject.photo === 'verified' ? '✓ Verified Site Project' : 'Illustrative Architectural Study'}
-                </span>
-              </div>
 
               <div className="absolute bottom-4 left-6 right-6 z-20 hidden sm:block">
                 <span className="text-xs font-black uppercase tracking-widest text-primary bg-background/90 px-3 py-1 rounded-md backdrop-blur-md border border-border/40">
@@ -320,6 +300,7 @@ function ProjectsPage() {
                   </div>
                 </div>
               </div>
+
               {/* Key Specifications Grid */}
               <div className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-4 rounded-2xl bg-muted/40 p-5 border border-border/60">
                 <div>

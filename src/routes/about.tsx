@@ -1,28 +1,165 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { Building2, Ruler, HardHat, ClipboardCheck } from 'lucide-react';
 import { ContactCTA, Eyebrow, TextLink, ProjectTile } from '@/components/site/shared';
-import { pageHead, featuredProjects } from '@/lib/company';
-export const Route = createFileRoute('/about')({ head: () => pageHead('About RST — The Experience Behind the Work', 'Meet Response Spectrum Trading PLC and explore its project experience, from NOC Head Office and Golden Star to Oromia Media Complex and Oromia Supreme Court.'), component: About });
+import { 
+  pageHead, 
+  featuredProjects, 
+  keyPersonnel, 
+  organizationalDepartments 
+} from '@/lib/company';
+
+export const Route = createFileRoute('/about')({ 
+  head: () => pageHead(
+    'About RST — The Experience Behind the Work', 
+    'Meet Response Spectrum Trading PLC and explore its project experience, company leadership, and structural engineering expertise.'
+  ), 
+  component: About 
+});
+
 const projectContext: Record<string, string> = {
- 'National Oil Ethiopia (NOC) Head Office': 'Corporate headquarters experience within RST’s commercial building portfolio.',
- 'Golden Star Mall and Office Complex': 'Retail and office development experience, bringing together different building uses in one complex.',
- 'Oromia Media Complex': 'Institutional building experience for a dedicated media complex.',
+  'National Oil Ethiopia (NOC) Head Office': 'Corporate headquarters experience within RST’s commercial building portfolio.',
+  'Golden Star Mall and Office Complex': 'Retail and office development experience, bringing together different building uses in one complex.',
+  'Oromia Media Complex': 'Institutional building experience for a dedicated media complex.',
 };
-const selectedProjects = featuredProjects().slice(0,6);
+
+const selectedProjects = featuredProjects().slice(0, 6);
+
 const values = [
- ['Quality & professionalism', 'Design decisions and construction oversight grounded in sound engineering and project requirements.'],
- ['Timely delivery', 'A focus on coordination and timely service throughout design and construction.'],
- ['Client satisfaction', 'Practical solutions shaped around the client’s brief, priorities, and project needs.'],
- ['Teamwork & collaboration', 'Architectural and engineering disciplines working toward a coordinated outcome.'],
- ['Continuous improvement', 'A commitment to refining how we design, review, and support project delivery.'],
- ['Cost efficiency', 'Attention to practical requirements and cost-conscious choices without losing sight of quality.'],
+  ['Quality & professionalism', 'Design decisions and construction oversight grounded in sound engineering and project requirements.'],
+  ['Timely delivery', 'A focus on coordination and timely service throughout design and construction.'],
+  ['Client satisfaction', 'Practical solutions shaped around the client’s brief, priorities, and project needs.'],
+  ['Teamwork & collaboration', 'Architectural and engineering disciplines working toward a coordinated outcome.'],
+  ['Continuous improvement', 'A commitment to refining how we design, review, and support project delivery.'],
+  ['Cost efficiency', 'Attention to practical requirements and cost-conscious choices without losing sight of quality.'],
 ];
-function About() { return <>
-<section className="about-opening"><div className="site-container"><Eyebrow>About Response Spectrum Trading PLC</Eyebrow><h1>Response Spectrum.<br/>Experience behind<br/><span className="text-primary">the work.</span></h1><div className="mt-8 grid gap-6 md:grid-cols-[1fr_1fr]"><p className="text-lg leading-relaxed">From NOC Head Office and Golden Star Mall to Oromia Media Complex and Oromia Supreme Court, our project experience spans corporate, commercial, and public buildings in Ethiopia.</p><p className="body-copy">Response Spectrum Trading PLC (RST) is a Grade One building consulting company registered in Ethiopia. We bring architecture, engineering, construction supervision, and contract administration together—with a practical focus on quality, timely service, and the client’s requirements.</p></div></div></section>
-<section className="border-y border-border bg-secondary"><div className="site-container grid gap-8 py-9 sm:grid-cols-3"><div><p className="text-2xl font-semibold">Grade One</p><p className="mt-2 text-xs text-muted-foreground">Building consulting company</p></div><div><p className="text-2xl font-semibold">Ethiopia</p><p className="mt-2 text-xs text-muted-foreground">Our base. Our project context.</p></div><div><p className="text-2xl font-semibold">Multidisciplinary</p><p className="mt-2 text-xs text-muted-foreground">Architecture & engineering expertise</p></div></div></section>
-<section className="section"><div className="site-container"><div className="mb-10 grid items-end gap-6 md:grid-cols-[1fr_auto]"><div><Eyebrow>Standout Project Experience</Eyebrow><h2 className="section-title">The projects behind our perspective.</h2><p className="body-copy mt-5 max-w-2xl">Corporate headquarters. Mixed-use developments. Public institutions. These projects form part of RST’s consultancy experience—and show the range of building contexts our team works across.</p></div><TextLink to="/projects">View the full portfolio</TextLink></div><div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{selectedProjects.map(p=><ProjectTile key={p.slug} project={p}/>)}</div><div className="mt-12 border-t border-border pt-8"><p className="mb-6 text-xs font-semibold uppercase tracking-widest text-primary">Beyond the featured projects</p><div className="grid gap-8 md:grid-cols-3">{[['Oromia Supreme Court','Public & institutional buildings','Court facilities form part of our institutional project experience.'],['Nyala Insurance Headquarter','Corporate buildings','Insurance headquarters experience adds another corporate building context to our portfolio.'],['Gidado Dam Project','Beyond buildings','Our supplied project portfolio also includes the Gidado Dam Project.']].map(([name,category,description])=><div key={name}><p className="mb-3 text-xs text-muted-foreground">{category}</p><h3 className="text-lg">{name}</h3><p className="body-copy mt-3">{description}</p></div>)}</div></div></div></section>
-<section className="section"><div className="site-container grid gap-12 md:grid-cols-[1fr_1.2fr]"><div><Eyebrow>Our Foundation</Eyebrow><h2 className="section-title">A clear lineage.<br/>A forward-looking focus.</h2><p className="body-copy mt-6">RST’s roots trace back to Bitalico Trading PLC, established in 2006. The company took its current form in 2010, bringing experienced architecture and engineering professionals together under Response Spectrum Trading PLC.</p><p className="body-copy mt-4">That foundation informs our purpose today: practical, quality-focused consultancy that connects the design intent with the realities of construction.</p></div><div className="history-list"><div><span className="history-year">2006</span><h3 className="text-lg">The foundation</h3><p className="body-copy mt-3">Bitalico Trading PLC is established—the earlier business in RST’s company history.</p></div><div><span className="history-year">2010</span><h3 className="text-lg">Response Spectrum Trading PLC</h3><p className="body-copy mt-3">RST is established in its current form, bringing together experienced professionals across architecture and engineering.</p></div><div><span className="history-year">Today</span><h3 className="text-lg">From design through construction</h3><p className="body-copy mt-3">Building consultancy focused on practical solutions, quality, timely service, and client requirements.</p></div></div></div></section>
-<section className="section bg-ink text-hero-foreground"><div className="site-container"><Eyebrow>Connected Expertise</Eyebrow><div className="grid gap-6 md:grid-cols-2"><h2 className="section-title">Different disciplines.<br/>One coordinated perspective.</h2><p className="text-sm leading-relaxed opacity-80">A building needs more than a strong concept. It needs structural integrity, coordinated systems, and informed oversight. RST brings these perspectives together across the life of a project.</p></div><div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">{[{icon:Building2,title:'Architecture',text:'Building planning and architectural design for residential, commercial, office, mixed-use, and institutional projects.'},{icon:Ruler,title:'Engineering',text:'Structural, civil, electrical, mechanical, and sanitary engineering expertise, supported by assessment and design review.'},{icon:HardHat,title:'Construction oversight',text:'Supervision that checks construction work against approved designs, specifications, and project quality requirements.'},{icon:ClipboardCheck,title:'Project coordination',text:'Contract administration and project management support to connect stakeholders, requirements, and construction-phase activities.'}].map(({icon:Icon,title,text})=><div className="border-t border-hero-foreground/20 pt-6" key={title}><Icon className="mb-5 text-primary" size={28} strokeWidth={1.4}/><h3 className="text-lg">{title}</h3><p className="mt-4 text-xs leading-7 opacity-75">{text}</p></div>)}</div></div></section>
-<section className="section"><div className="site-container"><div className="grid gap-6 md:grid-cols-[1fr_1.2fr]"><div><Eyebrow>Our Approach</Eyebrow><h2 className="section-title">Clear requirements.<br/>Considered decisions.</h2></div><p className="body-copy">Our services follow the needs of the project: establishing a clear design direction, developing coordinated engineering solutions, and supporting construction against approved requirements. Quality, time, and cost remain central considerations throughout.</p></div><div className="mt-12 grid gap-8 md:grid-cols-3">{[['01','Pre-construction','Design coordination, planning, procurement support, and commercial management.'],['02','Construction','Site supervision, contract administration, quality control, and monitoring of time and cost.'],['03','Post-construction','Testing and commissioning, as-built documentation, and technical and commercial handover.']].map(([number,title,text])=><div key={number} className="border-t border-border pt-6"><span className="text-sm text-primary">{number} /</span><h3 className="mb-3 mt-5 text-lg">{title}</h3><p className="body-copy">{text}</p></div>)}</div><div className="mt-9"><TextLink to="/services">Explore our services</TextLink></div></div></section>
-<section className="section bg-secondary"><div className="site-container grid gap-12 md:grid-cols-2"><div><Eyebrow>Our Mission</Eyebrow><h2 className="text-2xl">Quality. Timeliness. Cost efficiency.</h2><p className="body-copy mt-5">To provide quality, timely, and cost-efficient services in building design, construction supervision, and contract administration.</p></div><div><Eyebrow>Our Vision</Eyebrow><h2 className="text-2xl">A preferred consultancy in Ethiopia.</h2><p className="body-copy mt-5">To become a leading and preferred building consulting company in Ethiopia, recognized for quality service, client satisfaction, and professional excellence.</p></div></div></section>
-<section className="section"><div className="site-container"><Eyebrow>What Guides Us</Eyebrow><h2 className="section-title">Principles behind the work.</h2><div className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">{values.map(([title,text])=><div className="border-t border-border pt-5" key={title}><h3 className="text-base">{title}</h3><p className="body-copy mt-3">{text}</p></div>)}</div><div className="mt-16 grid gap-6 border-t border-border pt-10 md:grid-cols-[1fr_2fr]"><h2 className="text-2xl">The people behind RST</h2><div><p className="body-copy">Architects, structural engineers, civil engineers, electrical engineers, mechanical engineers, sanitary engineers, project managers, and construction supervision professionals contribute to RST’s multidisciplinary team. Each discipline brings a different lens; the shared focus is a practical, coordinated response to the client’s project.</p><div className="mt-6"><TextLink to="/projects">Explore our project experience</TextLink></div></div></div></div></section><ContactCTA/></>; }
+
+function About() { 
+  return (
+    <>
+      <section className="about-opening">
+        <div className="site-container">
+          <Eyebrow>About Response Spectrum Trading PLC</Eyebrow>
+          <h1>Response Spectrum.<br/>Experience behind<br/><span className="text-primary">the work.</span></h1>
+          <div className="mt-8 grid gap-6 md:grid-cols-[1fr_1fr]">
+            <p className="text-lg leading-relaxed">From NOC Head Office and Golden Star Mall to Oromia Media Complex and Oromia Supreme Court, our project experience spans corporate, commercial, and public buildings in Ethiopia.</p>
+            <p className="body-copy">Response Spectrum Trading PLC (RST) is a Grade One building consulting company registered in Ethiopia. We bring architecture, engineering, construction supervision, and contract administration together—with a practical focus on quality, timely service, and the client’s requirements.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-y border-border bg-secondary">
+        <div className="site-container grid gap-8 py-9 sm:grid-cols-3">
+          <div>
+            <p className="text-2xl font-semibold">Grade One</p>
+            <p className="mt-2 text-xs text-muted-foreground">Building consulting company</p>
+          </div>
+          <div>
+            <p className="text-2xl font-semibold">Ethiopia</p>
+            <p className="mt-2 text-xs text-muted-foreground">Our base. Our project context.</p>
+          </div>
+          <div>
+            <p className="text-2xl font-semibold">Multidisciplinary</p>
+            <p className="mt-2 text-xs text-muted-foreground">Architecture & engineering expertise</p>
+          </div>
+        </div>
+      </section>
+
+      {/* --- COMPANY LEADERSHIP & KEY PERSONNEL --- */}
+      <section className="section py-16">
+        <div className="site-container">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <Eyebrow>Key Technical Experts</Eyebrow>
+            <h2 className="section-title mt-2">Company Leadership & Key Personnel</h2>
+            <p className="body-copy mt-3">
+              Response Spectrum Trading PLC (RST) is led by highly qualified practicing structural engineers and architects holding PhD and Master’s degrees.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {keyPersonnel.map((person) => (
+              <div
+                key={person.name}
+                className="group relative flex flex-col justify-between rounded-3xl border border-border/80 bg-card p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-xl"
+              >
+                <div>
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="h-14 w-14 rounded-2xl bg-primary/10 border border-primary/20 text-primary flex items-center justify-center font-black text-lg group-hover:bg-primary group-hover:text-primary-foreground transition-colors shrink-0">
+                      {person.name.split(' ').map((n) => n[0]).join('')}
+                    </div>
+                    <div>
+                      <span className="text-[10px] font-black uppercase tracking-widest text-primary">
+                        {person.qualification}
+                      </span>
+                      <h3 className="text-lg font-extrabold text-foreground group-hover:text-primary transition-colors">
+                        {person.name}
+                      </h3>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2 border-t border-border/60 pt-4">
+                    <p className="text-xs font-bold text-foreground">
+                      {person.position}
+                    </p>
+                    <p className="text-xs text-muted-foreground leading-relaxed font-medium">
+                      {person.assignment}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-border/60 flex items-center justify-between text-[11px] font-bold text-muted-foreground">
+                  <span>Practicing Professional</span>
+                  <span className="text-primary font-black">RST Expert</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* ORGANIZATIONAL STRUCTURE */}
+          <div className="mt-16 rounded-3xl border border-border/80 bg-muted/30 p-8 sm:p-12">
+            <div className="text-center max-w-xl mx-auto mb-10">
+              <span className="text-xs font-black uppercase tracking-widest text-primary">
+                Institutional Framework
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-foreground mt-1">
+                Company Organization & Structure
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {organizationalDepartments.map((dept) => (
+                <div
+                  key={dept.name}
+                  className="rounded-2xl border border-border/60 bg-background p-6 shadow-sm"
+                >
+                  <h4 className="text-sm font-black uppercase tracking-wider text-primary border-b border-border/60 pb-3">
+                    {dept.name}
+                  </h4>
+                  <ul className="mt-4 space-y-2">
+                    {dept.roles.map((role) => (
+                      <li
+                        key={role}
+                        className="flex items-center text-xs font-semibold text-foreground/90 gap-2"
+                      >
+                        <span className="h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
+                        {role}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section"><div className="site-container"><div className="mb-10 grid items-end gap-6 md:grid-cols-[1fr_auto]"><div><Eyebrow>Standout Project Experience</Eyebrow><h2 className="section-title">The projects behind our perspective.</h2><p className="body-copy mt-5 max-w-2xl">Corporate headquarters. Mixed-use developments. Public institutions. These projects form part of RST’s consultancy experience—and show the range of building contexts our team works across.</p></div><TextLink to="/projects">View the full portfolio</TextLink></div><div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{selectedProjects.map(p=><ProjectTile key={p.slug} project={p}/>)}</div><div className="mt-12 border-t border-border pt-8"><p className="mb-6 text-xs font-semibold uppercase tracking-widest text-primary">Beyond the featured projects</p><div className="grid gap-8 md:grid-cols-3">{[['Oromia Supreme Court','Public & institutional buildings','Court facilities form part of our institutional project experience.'],['Nyala Insurance Headquarter','Corporate buildings','Insurance headquarters experience adds another corporate building context to our portfolio.'],['Gidado Dam Project','Beyond buildings','Our supplied project portfolio also includes the Gidado Dam Project.']].map(([name,category,description])=><div key={name}><p className="mb-3 text-xs text-muted-foreground">{category}</p><h3 className="text-lg">{name}</h3><p className="body-copy mt-3">{description}</p></div>)}</div></div></div></section>
+      <section className="section"><div className="site-container grid gap-12 md:grid-cols-[1fr_1.2fr]"><div><Eyebrow>Our Foundation</Eyebrow><h2 className="section-title">A clear lineage.<br/>A forward-looking focus.</h2><p className="body-copy mt-6">RST’s roots trace back to Bitalico Trading PLC, established in 2006. The company took its current form in 2010, bringing experienced architecture and engineering professionals together under Response Spectrum Trading PLC.</p><p className="body-copy mt-4">That foundation informs our purpose today: practical, quality-focused consultancy that connects the design intent with the realities of construction.</p></div><div className="history-list"><div><span className="history-year">2006</span><h3 className="text-lg">The foundation</h3><p className="body-copy mt-3">Bitalico Trading PLC is established—the earlier business in RST’s company history.</p></div><div><span className="history-year">2010</span><h3 className="text-lg">Response Spectrum Trading PLC</h3><p className="body-copy mt-3">RST is established in its current form, bringing together experienced professionals across architecture and engineering.</p></div><div><span className="history-year">Today</span><h3 className="text-lg">From design through construction</h3><p className="body-copy mt-3">Building consultancy focused on practical solutions, quality, timely service, and client requirements.</p></div></div></div></section>
+      <section className="section bg-ink text-hero-foreground"><div className="site-container"><Eyebrow>Connected Expertise</Eyebrow><div className="grid gap-6 md:grid-cols-2"><h2 className="section-title">Different disciplines.<br/>One coordinated perspective.</h2><p className="text-sm leading-relaxed opacity-80">A building needs more than a strong concept. It needs structural integrity, coordinated systems, and informed oversight. RST brings these perspectives together across the life of a project.</p></div><div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">{[{icon:Building2,title:'Architecture',text:'Building planning and architectural design for residential, commercial, office, mixed-use, and institutional projects.'},{icon:Ruler,title:'Engineering',text:'Structural, civil, electrical, mechanical, and sanitary engineering expertise, supported by assessment and design review.'},{icon:HardHat,title:'Construction oversight',text:'Supervision that checks construction work against approved designs, specifications, and project quality requirements.'},{icon:ClipboardCheck,title:'Project coordination',text:'Contract administration and project management support to connect stakeholders, requirements, and construction-phase activities.'}].map(({icon:Icon,title,text})=><div className="border-t border-hero-foreground/20 pt-6" key={title}><Icon className="mb-5 text-primary" size={28} strokeWidth={1.4}/><h3 className="text-lg">{title}</h3><p className="mt-4 text-xs leading-7 opacity-75">{text}</p></div>)}</div></div></section>
+      <section className="section"><div className="site-container"><div className="grid gap-6 md:grid-cols-[1fr_1.2fr]"><div><Eyebrow>Our Approach</Eyebrow><h2 className="section-title">Clear requirements.<br/>Considered decisions.</h2></div><p className="body-copy">Our services follow the needs of the project: establishing a clear design direction, developing coordinated engineering solutions, and supporting construction against approved requirements. Quality, time, and cost remain central considerations throughout.</p></div><div className="mt-12 grid gap-8 md:grid-cols-3">{[['01','Pre-construction','Design coordination, planning, procurement support, and commercial management.'],['02','Construction','Site supervision, contract administration, quality control, and monitoring of time and cost.'],['03','Post-construction','Testing and commissioning, as-built documentation, and technical and commercial handover.']].map(([number,title,text])=><div key={number} className="border-t border-border pt-6"><span className="text-sm text-primary">{number} /</span><h3 className="mb-3 mt-5 text-lg">{title}</h3><p className="body-copy">{text}</p></div>)}</div><div className="mt-9"><TextLink to="/services">Explore our services</TextLink></div></div></section>
+      <section className="section bg-secondary"><div className="site-container grid gap-12 md:grid-cols-2"><div><Eyebrow>Our Mission</Eyebrow><h2 className="text-2xl">Quality. Timeliness. Cost efficiency.</h2><p className="body-copy mt-5">To provide quality, timely, and cost-efficient services in building design, construction supervision, and contract administration.</p></div><div><Eyebrow>Our Vision</Eyebrow><h2 className="text-2xl">A preferred consultancy in Ethiopia.</h2><p className="body-copy mt-5">To become a leading and preferred building consulting company in Ethiopia, recognized for quality service, client satisfaction, and professional excellence.</p></div></div></section>
+      <section className="section"><div className="site-container"><Eyebrow>What Guides Us</Eyebrow><h2 className="section-title">Principles behind the work.</h2><div className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">{values.map(([title,text])=><div className="border-t border-border pt-5" key={title}><h3 className="text-base">{title}</h3><p className="body-copy mt-3">{text}</p></div>)}</div><div className="mt-16 grid gap-6 border-t border-border pt-10 md:grid-cols-[1fr_2fr]"><h2 className="text-2xl">The people behind RST</h2><div><p className="body-copy">Architects, structural engineers, civil engineers, electrical engineers, mechanical engineers, sanitary engineers, project managers, and construction supervision professionals contribute to RST’s multidisciplinary team. Each discipline brings a different lens; the shared focus is a practical, coordinated response to the client’s project.</p><div className="mt-6"><TextLink to="/projects">Explore our project experience</TextLink></div></div></div></div></section>
+      
+      <ContactCTA/>
+    </>
+  ); 
+}

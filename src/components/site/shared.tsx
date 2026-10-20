@@ -35,6 +35,7 @@ export function ProjectDialog({ project, onClose }: { project: Project | null; o
 
 const AUTOPLAY_MS = 5000;
 export type Slide = { label: string; title: string; text: string; cta: string; to: To; image: string; imageAlt: string; credit?: string };
+
 export function HeroCarousel({ slides }: { slides: Slide[] }) {
   const [index, setIndex] = useState(0);
 
@@ -48,19 +49,111 @@ export function HeroCarousel({ slides }: { slides: Slide[] }) {
   const go = (i: number) => { setIndex((i + slides.length) % slides.length); };
 
   return (
-    <section className="hero" aria-roledescription="carousel" aria-label="Featured">
-      {slides.map((s, i) => <img key={s.title} src={s.image} alt={i === index ? s.imageAlt : ''} aria-hidden={i !== index} width={1600} height={1008} className={`hero-slide ${i === index ? 'is-active' : ''}`} fetchPriority={i === 0 ? 'high' : 'low'}/>)}
-      <div className="site-container hero-content" aria-live="polite">
-        {slides.map((s, i) => i === index && <div key={s.title} className="hero-copy"><Eyebrow>{s.label}</Eyebrow><h1>{s.title}</h1><p>{s.text}</p><div className="mt-8"><Button asChild size="lg"><Link to={s.to}>{s.cta} <ArrowUpRight/></Link></Button></div></div>)}
-      </div>
-      <div className="site-container hero-bottom">
-        <div className="flex items-center gap-3">
-          {slides.map((s, i) => <button key={s.title} type="button" onClick={() => go(i)} aria-label={`Go to slide ${i + 1}: ${s.label}`} aria-current={i === index} className={`hero-dot ${i === index ? 'is-active' : ''}`}><span>{String(i + 1).padStart(2, '0')}</span></button>)}
+    <section className="relative h-[80vh] sm:h-[85vh] min-h-[520px] w-full overflow-hidden bg-black text-white" aria-roledescription="carousel" aria-label="Featured">
+      {/* Slide Background Images */}
+      {slides.map((s, i) => (
+        <div
+          key={s.title}
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            i === index ? 'opacity-100 z-10' : 'opacity-0 z-0'
+          }`}
+        >
+          <img
+            src={s.image}
+            alt={i === index ? s.imageAlt : ''}
+            aria-hidden={i !== index}
+            width={1600}
+            height={1008}
+            className="h-full w-full object-cover object-center scale-105 transition-transform duration-10000 ease-out"
+            fetchPriority={i === 0 ? 'high' : 'low'}
+          />
+          {/* Dual Architectural Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/30" />
+          <div className="absolute inset-0 bg-black/20" />
         </div>
-        <div className="flex items-center gap-4">
-          <span className="hidden sm:inline">{slides[index]?.credit ?? 'Illustrative image'}</span>
-          <button type="button" className="hero-arrow" onClick={() => go(index - 1)} aria-label="Previous slide"><ChevronLeft size={18}/></button>
-          <button type="button" className="hero-arrow" onClick={() => go(index + 1)} aria-label="Next slide"><ChevronRight size={18}/></button>
+      ))}
+
+      {/* Modern Centered Slide Content */}
+      <div className="relative z-20 flex h-full items-center justify-center pb-12 sm:pb-16" aria-live="polite">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl">
+          {slides.map((s, i) => i === index && (
+            <div key={s.title} className="flex flex-col items-center animate-in fade-in slide-in-from-bottom-3 duration-700">
+              {/* Glassmorphism Eyebrow Badge */}
+              <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-[11px] sm:text-xs font-black uppercase tracking-widest text-primary border border-white/20 backdrop-blur-md shadow-lg mb-4">
+                <span className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+                {s.label}
+              </div>
+
+              {/* Centered Modern Headline */}
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.15] drop-shadow-md max-w-3xl">
+                {s.title}
+              </h1>
+
+              {/* Subtitle Copy */}
+              <p className="mt-3 sm:mt-5 text-sm sm:text-base lg:text-lg text-white/90 font-medium leading-relaxed max-w-2xl mx-auto drop-shadow-sm">
+                {s.text}
+              </p>
+
+              {/* Mobile-Optimized CTA Button */}
+              <div className="mt-6 sm:mt-8">
+                <Button asChild size="lg" className="rounded-2xl px-8 py-3.5 text-xs font-black uppercase tracking-widest shadow-xl transition-all hover:scale-105">
+                  <Link to={s.to}>
+                    {s.cta} <ArrowUpRight className="ml-1 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Bottom Navigation Strip */}
+      <div className="absolute bottom-4 sm:bottom-8 left-0 right-0 z-30">
+        <div className="site-container flex items-center justify-between gap-4">
+          {/* Slide Dots / Numbers */}
+          <div className="flex items-center gap-1.5 sm:gap-3">
+            {slides.map((s, i) => (
+              <button
+                key={s.title}
+                type="button"
+                onClick={() => go(i)}
+                aria-label={`Go to slide ${i + 1}: ${s.label}`}
+                aria-current={i === index}
+                className={`transition-all duration-300 rounded-full h-2 sm:h-2.5 ${
+                  i === index
+                    ? 'w-8 sm:w-10 bg-primary'
+                    : 'w-2 sm:w-2.5 bg-white/40 hover:bg-white/80'
+                }`}
+              >
+                <span className="sr-only">{String(i + 1).padStart(2, '0')}</span>
+              </button>
+            ))}
+          </div>
+
+          {/* Navigation Arrows & Credit */}
+          <div className="flex items-center gap-3 text-xs text-white/70">
+            <span className="hidden sm:inline font-medium text-[11px] uppercase tracking-wider text-white/60">
+              {slides[index]?.credit ?? 'Response Spectrum Trading PLC'}
+            </span>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white backdrop-blur-md transition-all hover:bg-primary hover:border-primary active:scale-95"
+                onClick={() => go(index - 1)}
+                aria-label="Previous slide"
+              >
+                <ChevronLeft size={18} />
+              </button>
+              <button
+                type="button"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white backdrop-blur-md transition-all hover:bg-primary hover:border-primary active:scale-95"
+                onClick={() => go(index + 1)}
+                aria-label="Next slide"
+              >
+                <ChevronRight size={18} />
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
