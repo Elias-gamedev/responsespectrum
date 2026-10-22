@@ -4,14 +4,13 @@ import { ContactCTA, Eyebrow, TextLink, ProjectTile } from '@/components/site/sh
 import { 
   pageHead, 
   featuredProjects, 
-  keyPersonnel, 
   organizationalDepartments 
 } from '@/lib/company';
 
 export const Route = createFileRoute('/about')({ 
   head: () => pageHead(
     'About RST — The Experience Behind the Work', 
-    'Meet Response Spectrum Trading PLC and explore its project experience, company leadership, and structural engineering expertise.'
+    'Meet Response Spectrum Trading PLC and explore its project experience, company structure, and structural engineering expertise.'
   ), 
   component: About 
 });
@@ -64,65 +63,16 @@ function About() {
         </div>
       </section>
 
-      {/* --- COMPANY LEADERSHIP & KEY PERSONNEL --- */}
+      {/* --- ORGANIZATIONAL STRUCTURE SECTION --- */}
       <section className="section py-16">
         <div className="site-container">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <Eyebrow>Key Technical Experts</Eyebrow>
-            <h2 className="section-title mt-2">Company Leadership & Key Personnel</h2>
-            <p className="body-copy mt-3">
-              Response Spectrum Trading PLC (RST) is led by highly qualified practicing structural engineers and architects holding PhD and Master’s degrees.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {keyPersonnel.map((person) => (
-              <div
-                key={person.name}
-                className="group relative flex flex-col justify-between rounded-3xl border border-border/80 bg-card p-7 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/50 hover:shadow-xl"
-              >
-                <div>
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="h-14 w-14 rounded-2xl bg-primary/10 border border-primary/20 text-primary flex items-center justify-center font-black text-lg group-hover:bg-primary group-hover:text-primary-foreground transition-colors shrink-0">
-                      {person.name.split(' ').map((n) => n[0]).join('')}
-                    </div>
-                    <div>
-                      <span className="text-[10px] font-black uppercase tracking-widest text-primary">
-                        {person.qualification}
-                      </span>
-                      <h3 className="text-lg font-extrabold text-foreground group-hover:text-primary transition-colors">
-                        {person.name}
-                      </h3>
-                    </div>
-                  </div>
-
-                  <div className="space-y-2 border-t border-border/60 pt-4">
-                    <p className="text-xs font-bold text-foreground">
-                      {person.position}
-                    </p>
-                    <p className="text-xs text-muted-foreground leading-relaxed font-medium">
-                      {person.assignment}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="mt-6 pt-4 border-t border-border/60 flex items-center justify-between text-[11px] font-bold text-muted-foreground">
-                  <span>Practicing Professional</span>
-                  <span className="text-primary font-black">RST Expert</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* ORGANIZATIONAL STRUCTURE */}
-          <div className="mt-16 rounded-3xl border border-border/80 bg-muted/30 p-8 sm:p-12">
+          <div className="rounded-3xl border border-border/80 bg-muted/30 p-8 sm:p-12">
             <div className="text-center max-w-xl mx-auto mb-10">
-              <span className="text-xs font-black uppercase tracking-widest text-primary">
-                Institutional Framework
-              </span>
-              <h3 className="text-2xl sm:text-3xl font-black tracking-tight text-foreground mt-1">
-                Company Organization & Structure
-              </h3>
+              <Eyebrow>Institutional Framework</Eyebrow>
+              <h2 className="section-title mt-2">Company Organization & Structure</h2>
+              <p className="body-copy mt-3">
+                Structured departments ensuring technical coordination across architectural design, engineering, contract administration, and site supervision.
+              </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -131,9 +81,9 @@ function About() {
                   key={dept.name}
                   className="rounded-2xl border border-border/60 bg-background p-6 shadow-sm"
                 >
-                  <h4 className="text-sm font-black uppercase tracking-wider text-primary border-b border-border/60 pb-3">
+                  <h3 className="text-sm font-black uppercase tracking-wider text-primary border-b border-border/60 pb-3">
                     {dept.name}
-                  </h4>
+                  </h3>
                   <ul className="mt-4 space-y-2">
                     {dept.roles.map((role) => (
                       <li
