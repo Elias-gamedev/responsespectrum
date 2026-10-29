@@ -100,12 +100,13 @@
   100% { transform: translateX(-50%); }
 }
 
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
 .animate-marquee {
   display: flex;
   width: max-content;
-  animation: marquee 25s linear infinite;
-}
-
-.animate-marquee:hover {
-  animation-play-state: paused;
+  animation: marquee 40s linear infinite; /* Increase seconds (e.g., 35s or 45s) to make it slower */
 }

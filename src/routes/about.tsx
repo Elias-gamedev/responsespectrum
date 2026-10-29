@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { Building2, Ruler, HardHat, ClipboardCheck } from 'lucide-react';
+import { Building2, Ruler, HardHat, ClipboardCheck, Globe2 } from 'lucide-react';
 import { ContactCTA, Eyebrow, TextLink, ProjectTile } from '@/components/site/shared';
 import { 
   pageHead, 
@@ -9,8 +9,8 @@ import {
 
 export const Route = createFileRoute('/about')({ 
   head: () => pageHead(
-    'About RST — The Experience Behind the Work', 
-    'Meet Response Spectrum Trading PLC and explore its project experience, company structure, and structural engineering expertise.'
+    'About RST — International Partnerships & Engineering Excellence', 
+    'Discover Response Spectrum Trading PLC (RST), a Grade One building consultancy in Ethiopia bridging local expertise with international partnerships and global engineering standards.'
   ), 
   component: About 
 });
@@ -38,10 +38,14 @@ function About() {
       <section className="about-opening">
         <div className="site-container">
           <Eyebrow>About Response Spectrum Trading PLC</Eyebrow>
-          <h1>Response Spectrum.<br/>Experience behind<br/><span className="text-primary">the work.</span></h1>
+          <h1>Response Spectrum.<br/>Global standards, <br/><span className="text-primary">local mastery.</span></h1>
           <div className="mt-8 grid gap-6 md:grid-cols-[1fr_1fr]">
-            <p className="text-lg leading-relaxed">From NOC Head Office and Golden Star Mall to Oromia Media Complex and Oromia Supreme Court, our project experience spans corporate, commercial, and public buildings in Ethiopia.</p>
-            <p className="body-copy">Response Spectrum Trading PLC (RST) is a Grade One building consulting company registered in Ethiopia. We bring architecture, engineering, construction supervision, and contract administration together—with a practical focus on quality, timely service, and the client’s requirements.</p>
+            <p className="text-lg leading-relaxed">
+              From landmark corporate headquarters like NOC Head Office to complex institutional and commercial developments, Response Spectrum Trading PLC (RST) bridges rigorous Ethiopian engineering experience with robust international partnerships and global best practices.
+            </p>
+            <p className="body-copy">
+              Response Spectrum Trading PLC is a Grade One building consulting firm in Ethiopia. We actively integrate international partners, global engineering methodologies, and multinational stakeholder coordination into our architectural design, construction supervision, and contract administration workflows.
+            </p>
           </div>
         </div>
       </section>
@@ -53,12 +57,51 @@ function About() {
             <p className="mt-2 text-xs text-muted-foreground">Building consulting company</p>
           </div>
           <div>
-            <p className="text-2xl font-semibold">Ethiopia</p>
-            <p className="mt-2 text-xs text-muted-foreground">Our base. Our project context.</p>
+            <p className="text-2xl font-semibold">Global Network</p>
+            <p className="mt-2 text-xs text-muted-foreground">Strategic international partnerships</p>
           </div>
           <div>
             <p className="text-2xl font-semibold">Multidisciplinary</p>
             <p className="mt-2 text-xs text-muted-foreground">Architecture & engineering expertise</p>
+          </div>
+        </div>
+      </section>
+
+      {/* --- INTERNATIONAL PARTNERSHIPS & COLLABORATION SPOTLIGHT --- */}
+      <section className="section py-16 bg-muted/20">
+        <div className="site-container">
+          <div className="grid gap-12 md:grid-cols-[1.2fr_1fr] items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3.5 py-1 text-xs font-black uppercase tracking-widest text-primary border border-primary/20 mb-4">
+                <Globe2 size={14} /> International Credibility
+              </div>
+              <h2 className="section-title">Bridging Local Execution with International Standards.</h2>
+              <p className="body-copy mt-4">
+                To deliver world-class infrastructure and high-end commercial projects, RST maintains strategic synergy with international engineering firms, development partners, and global technology providers. This collaborative approach allows us to incorporate advanced global standards, green building frameworks, and innovative structural systems directly into the Ethiopian construction landscape.
+              </p>
+              <p className="body-copy mt-3">
+                Whether coordinating with multinational stakeholders or complying with international compliance frameworks, our multidisciplinary team ensures every project meets elite global benchmarks for safety, durability, and cost-efficiency.
+              </p>
+            </div>
+            <div className="rounded-3xl border border-border/80 bg-background p-8 shadow-sm space-y-6">
+              <h3 className="text-lg font-black tracking-tight text-foreground border-b border-border/60 pb-3">
+                Key International Strengths
+              </h3>
+              <ul className="space-y-4 text-xs font-semibold text-foreground/90">
+                <li className="flex items-start gap-3">
+                  <span className="h-2 w-2 rounded-full bg-primary mt-1 shrink-0" />
+                  <span>Cross-border technical exchange with international consultants and engineering bodies.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="h-2 w-2 rounded-full bg-primary mt-1 shrink-0" />
+                  <span>Compliance with rigorous international building codes and sustainability criteria.</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="h-2 w-2 rounded-full bg-primary mt-1 shrink-0" />
+                  <span>Seamless stakeholder management across multinational development projects.</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>

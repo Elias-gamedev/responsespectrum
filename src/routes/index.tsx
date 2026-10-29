@@ -77,29 +77,30 @@ function Home() {
       {/* 1. HERO CAROUSEL */}
       <HeroCarousel slides={slides}/>
 
-      {/* 2. ENHANCED TRUSTED BY / PARTNER SECTION */}
-      <section className="border-y border-border/60 bg-muted/30 py-16 sm:py-20 overflow-hidden">
-        <div className="site-container mb-10 text-center">
+     {/* --- TRUSTED BY / INTERNATIONAL PARTNERS MARQUEE --- */}
+     <section className="border-y border-border/60 bg-muted/30 py-16 sm:py-20 overflow-hidden">
+        <div className="site-container mb-12 text-center">
           <p className="text-xs font-bold uppercase tracking-widest text-primary/80">
-            Trusted Experience
+            Global & Local Network
           </p>
           <h2 className="mt-2 text-xl font-bold tracking-tight text-foreground sm:text-2xl">
-            Trusted by Leading Organizations & Development Partners Across Ethiopia
+            Trusted by Leading Organizations, Enterprises & International Partners
           </h2>
         </div>
         
-        {/* Infinite Sliding Container */}
+        {/* Infinite Sliding Container (Shows ~3 on Mobile, ~5 on Desktop in natural color) */}
         <div className="relative w-full overflow-hidden flex py-4">
-          <div className="animate-marquee flex items-center gap-10 sm:gap-14">
+          <div className="animate-marquee flex items-center gap-6 sm:gap-16">
             {[...partners, ...partners, ...partners, ...partners].map((partner, index) => (
               <div 
                 key={`${partner.name}-${index}`} 
-                className="group relative flex h-32 w-32 sm:h-36 sm:w-36 shrink-0 items-center justify-center rounded-full border border-border/80 bg-background p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-md"
+                className="group relative flex h-28 w-28 sm:h-44 sm:w-44 shrink-0 items-center justify-center rounded-2xl sm:rounded-3xl border border-border/80 bg-background p-4 sm:p-6 shadow-sm transition-transform duration-300 hover:scale-105"
               >
                 <img 
                   src={partner.image} 
-                  alt={`${partner.name} - partner of Response Spectrum Trading`} 
-                  className="h-full w-full object-contain grayscale opacity-80 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100"
+                  alt={`${partner.name} - partner of Response Spectrum Trading PLC`} 
+                  className="h-full w-full object-contain"
+                  loading="lazy"
                 />
               </div>
             ))}
@@ -249,23 +250,6 @@ function Home() {
                     <span className="text-[10px] font-black uppercase tracking-widest text-primary block">
                       Official Response Spectrum Trading PLC Consultancy Assignment
                     </span>
-                    <p className="text-base sm:text-lg font-black text-foreground mt-1">
-                      {selectedProject.assignment || 
-                        (selectedProject.description.includes('Assignment:')
-                          ? selectedProject.description.split('Assignment:')[1].trim()
-                          : 'Design, Construction Supervision & Contract Administration')}
-                    </p>
-                  </div>
-                  
-                  {/* Visual Scope Tags */}
-                  <div className="flex flex-wrap gap-1.5 shrink-0">
-                    {(selectedProject.assignmentTags || ['Design', 'Supervision', 'Contract Admin', 'Structural Work']
-                      .filter(scope => selectedProject.description.toLowerCase().includes(scope.toLowerCase().split(' ')[0])))
-                      .map((tag) => (
-                        <span key={tag} className="rounded-lg bg-primary text-primary-foreground px-2.5 py-1 text-[10px] font-black uppercase tracking-wider shadow-sm">
-                          {tag}
-                        </span>
-                      ))}
                   </div>
                 </div>
               </div>

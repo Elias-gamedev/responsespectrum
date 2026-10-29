@@ -220,12 +220,6 @@ function ProjectsPage() {
               </div>
             </div>
           )}
-
-          <div className="mt-20 border-t border-border/60 pt-8 text-center">
-            <p className="text-xs text-muted-foreground font-medium">
-              * Project entries marked “Illustrative Study” utilize conceptual architectural mockups pending final site photography delivery.
-            </p>
-          </div>
         </div>
       </section>
 

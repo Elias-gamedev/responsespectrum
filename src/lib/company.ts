@@ -44,6 +44,12 @@ import imgGojammed from '@/assets/gojammed.jpg';
 import imgficheG from '@/assets/ficheG.jpg';
 import archdesign from '@/assets/archdesign.jpg';
 import contractadmin from '@/assets/contractadmin.jpg';
+import ECGlogo from '@/assets/ECGlogo.jpg';
+import Sutherlandlogo from '@/assets/Sutherlandlogo.jpg';
+import dhklogo from '@/assets/dhklogo.jpg';
+import SVAlogo from '@/assets/SVAlogo.jpg';
+import BESlogo from '@/assets/BESlogo.png';
+
 
 
 
@@ -84,7 +90,13 @@ export const images = {
   slidepicapartment: imgslidepicapartment ,
   imgMixeduse: Mixeduse ,
   imgshakaRS: shakaRS,
-  Oromiamediacomplex:imgOromiamediacomplex
+  Oromiamediacomplex:imgOromiamediacomplex,
+  imgECGlogo: ECGlogo,
+  imgSutherland: Sutherlandlogo,
+  imgDHk: dhklogo,
+  imgSVA: SVAlogo,
+  imgBESlogo:BESlogo,
+
 };
 
 export const company = {
@@ -114,9 +126,16 @@ export const activeSocialLinks = () => socialLinks.filter(link => link.url.trim(
  */
 export const partners = [
   { name: 'National Oil Ethiopia (NOC)', image: logo1 },
+  { name: 'ECG', image: images.imgECGlogo },
   { name: 'Oromia Media Complex', image: logo2 },
+  { name: 'DHK', image: images.imgDHk },
   { name: 'Nyala Insurance', image: logo3 },
+  { name: 'Sutherland', image: images.imgSutherland },
   { name: 'Matts Real estate', image: logo4 },
+  { name: 'ECG', image: images.imgECGlogo },
+  { name: 'Sutherland', image: images.imgSutherland },
+  { name: 'BES', image: images.imgBESlogo },
+  
 ];
 
 /*keyteam members */
@@ -299,12 +318,13 @@ export const projects: Project[] = [
     slug: 'oromia-media-complex', 
     name: 'Oromia Media Complex', 
     category: I, 
-    description: 'Major broadcasting complex (2B+G+12+Roof Terrace, 36,000 m2) featuring complex, column-free studios exceeding 600 m2. Assignment: Structural design revision, construction supervision, and contract administration in association with ECO.', 
+    description: 'Major broadcasting complex (2B+G+12+Roof Terrace, 36,000 m2) featuring complex, column-free studios exceeding 600 m2. Assignment: Structural design revision and construction supervision in association with ECO.', 
     image: imgOromiamediacomplex, 
     imageAlt: 'Oromia Media Complex, the glass-fronted OBN headquarters in Addis Ababa', 
     cost: '5.4 Billion ETB',
     size: '2B+G+12 (36,000 m2)',
-    status: 'Under Construction'
+    status: 'Under Construction',
+    assignmentTags: ['Structural Design Revision'," Construction Supervision "]
   },
   { 
     slug: 'samket-mall', 
